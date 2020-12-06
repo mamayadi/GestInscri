@@ -1,17 +1,29 @@
-package gestInscri;
+package gestInscri.models.entity;
+
+import gestInscri.enums.Roles;
 
 public abstract class User {
 	String nom;
 	String prenom;
 	String mail;
 	String password;
+	Roles role;
 
-	public User(String nom, String prenom, String mail, String password) {
+	public User(String nom, String prenom, String mail, String password, Roles role) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.password = password;
+		this.role = role;
+	}
+
+	public Roles getRole() {
+		return role;
+	}
+
+	public void setRole(Roles role) {
+		this.role = role;
 	}
 
 	public String getNom() {

@@ -1,6 +1,9 @@
-package gestInscri;
+package gestInscri.models.entity;
 
 import java.util.ArrayList;
+
+import gestInscri.enums.CandidatStatus;
+import gestInscri.enums.Roles;
 
 public class Candidat extends User {
 	private String adresse;
@@ -10,7 +13,7 @@ public class Candidat extends User {
 
 	public Candidat(String nom, String prenom, String mail, String password, String adresse,
 			ArrayList<String> documentsPedagogiques) {
-		super(nom, prenom, mail, password);
+		super(nom, prenom, mail, password, Roles.Candidat);
 		this.adresse = adresse;
 		this.documentsPedagogiques = documentsPedagogiques;
 	}

@@ -1,4 +1,4 @@
-package gestInscri;
+package gestInscri.models.entity;
 
 import java.util.Date;
 
