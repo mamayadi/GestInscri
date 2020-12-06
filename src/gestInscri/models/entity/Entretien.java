@@ -13,4 +13,28 @@ public class Entretien {
 		this.dateEntretien = dateEntretien;
 	}
 
+	public Candidat getCandidat() {
+		return candidat;
+	}
+
+	public void setCandidat(Candidat candidat) {
+		this.candidat = candidat;
+	}
+
+	public Enseignant getEnseignant() {
+		return enseignant;
+	}
+
+	public void setEnseignant(Enseignant enseignant) {
+		this.enseignant = enseignant;
+	}
+
+	public Date getDateEntretien() {
+		return dateEntretien;
+	}
+
+	public void setDateEntretien(Date dateEntretien) {
+		this.dateEntretien = dateEntretien;
+	}
+
 }
