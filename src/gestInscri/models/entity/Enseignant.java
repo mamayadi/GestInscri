@@ -7,7 +7,6 @@ public class Enseignant extends User {
 
 	public Enseignant(String nom, String prenom, String mail, String password) {
 		super(nom, prenom, mail, password, Roles.Enseignant);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Candidat[] getListDossier() {
