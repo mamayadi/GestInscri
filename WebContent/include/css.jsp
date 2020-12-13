@@ -1,0 +1,2 @@
+<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/dashlite.css?ver=2.2.0">
+<link id="skin-default" rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/theme.css?ver=2.2.0">
