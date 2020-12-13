@@ -1,21 +1,45 @@
 package gestInscri.models.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import gestInscri.enums.Roles;
 
-public abstract class User {
-	String nom;
-	String prenom;
-	String mail;
-	String password;
-	Roles role;
+/**
+ * User model
+ */
+@Entity
+@Table(name = "user")
+public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+	@Column(name = "nom")
+	private String nom;
+	@Column(name = "prenom")
+	private String prenom;
+	@Column(name = "mail")
+	private String mail;
+	@Column(name = "password")
+	private String password;
+	@Column(name = "role")
+	private Roles role;
 
 	public User(String nom, String prenom, String mail, String password, Roles role) {
-		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.password = password;
 		this.role = role;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public Roles getRole() {

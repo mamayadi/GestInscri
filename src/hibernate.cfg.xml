@@ -3,12 +3,10 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-
 	<session-factory>
-
 		<!-- JDBC Database connection settings -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/gestInscri?useSSL=false</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/gestinscri?useSSL=false</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password"></property>
 
@@ -20,11 +18,10 @@
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">update</property>
+		<mapping class="gestInscri.models.entity.User" />
 		<mapping class="gestInscri.models.entity.Admin" />
 		<mapping class="gestInscri.models.entity.Candidat" />
 		<mapping class="gestInscri.models.entity.Enseignant" />
 		<mapping class="gestInscri.models.entity.Entretien" />
-
 	</session-factory>
-
 </hibernate-configuration>
