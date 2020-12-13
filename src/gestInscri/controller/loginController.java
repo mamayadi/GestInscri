@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import gestInscri.enums.Roles;
 import gestInscri.models.dao.AdminDao;
 import gestInscri.models.dao.UserDao;
 import gestInscri.models.entity.Admin;
@@ -39,15 +40,13 @@ public class loginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
-			Admin createdAdmin = new AdminDao().createAdmin(new Admin("med", "ayadi", "admin@test.com", "123"));
-			PrintWriter out = response.getWriter();
-			out.print("Admin created " + createdAdmin);
-		} catch (Exception e) {
-			PrintWriter out = response.getWriter();
-			out.print(e.toString());
-			// System.out.println(e.toString());
-		}
+		/*
+		 * try { Admin createdAdmin = new AdminDao().createAdmin(new
+		 * Admin("med", "ayadi", "admin@test.com", "123")); PrintWriter out =
+		 * response.getWriter(); out.print("Admin created " + createdAdmin); }
+		 * catch (Exception e) { PrintWriter out = response.getWriter();
+		 * out.print(e.toString()); // System.out.println(e.toString()); }
+		 */
 	}
 
 	/**
@@ -56,22 +55,23 @@ public class loginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String login = request.getParameter("login");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		User user = new UserDao().userLogin(login, password);
+		User user = new UserDao().userLogin(email, password);
 		if (user != null) {
 			request.getSession().setAttribute("connectedUser", user);
 			ServletContext application = getServletContext();
-			ArrayList<User> users = (ArrayList<User>) application.getAttribute("users");
-			if (users == null) {
-				List<User> listUser = new UserDao().getUsers();
-				application.setAttribute("users", listUser);
+			if (user.getRole() == Roles.Admin) {
+				response.sendRedirect(request.getContextPath() + "/admin/index.jsp");
+			} else if (user.getRole() == Roles.Enseignant) {
+				response.sendRedirect(request.getContextPath() + "/Enseignant/index.jsp");
+			} else {
+				response.sendRedirect(request.getContextPath() + "/candidat/index.jsp");
 			}
-			response.sendRedirect("welcome.jsp");
 		} else {
-			request.setAttribute("error", "Compte introuvable!");
-			getServletContext().getRequestDispatcher("login.jsp").forward(request, response);
+			request.setAttribute("error", "Compte introuvable!"+ user);
+			getServletContext().getRequestDispatcher("/login.jsp").forward(request,
+					response);
 		}
 
 	}

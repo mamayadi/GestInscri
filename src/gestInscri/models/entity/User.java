@@ -1,5 +1,7 @@
 package gestInscri.models.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,7 @@ import gestInscri.enums.Roles;
  */
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -36,6 +38,14 @@ public class User {
 		this.mail = mail;
 		this.password = password;
 		this.role = role;
+	}
+
+	public User() {
+		this.nom = null;
+		this.prenom = null;
+		this.mail = null;
+		this.password = null;
+		this.role = null;
 	}
 
 	public int getId() {

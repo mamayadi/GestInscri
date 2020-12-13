@@ -18,10 +18,12 @@ public class UserDao {
     public User userLogin(String email, String password) {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
-			Query query = session.createQuery("from User u where u.mail =:mail AND u.password =:password");
+			transaction = session.beginTransaction();
+			Query query = session.createQuery("from User u where u.mail = :mail AND u.password = :password", User.class);
 			query.setParameter("mail", email);
 			query.setParameter("password", password);
 			List<User> users = query.list();
+			transaction.commit();
 			if (users.size() != 0) {
 				return users.get(0);
 			} else {
