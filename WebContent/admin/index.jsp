@@ -22,7 +22,7 @@
 		<!-- main @s -->
 		<div class="nk-main ">
 			<!-- sidebar @s -->
-			<%@ include file="/include/menu.jsp"%>
+			<%@ include file="/include/menu-admin.jsp"%>
 			<!-- sidebar @e -->
 			<!-- wrap @s -->
 			<div class="nk-wrap ">
@@ -30,7 +30,9 @@
 				<%@ include file="/include/header.jsp"%>
 				<!-- main header @e -->
 				<!-- content @s -->
-				<div class="nk-content "></div>
+				<div class="nk-content ">
+				
+				</div>
 				<!-- content @e -->
 				<!-- footer @s -->
 				<%@ include file="/include/Footer.jsp"%>
