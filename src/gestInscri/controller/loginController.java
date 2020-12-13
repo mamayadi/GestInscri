@@ -39,7 +39,7 @@ public class loginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*try {
+		try {
 			Admin createdAdmin = new AdminDao().createAdmin(new Admin("med", "ayadi", "admin@test.com", "123"));
 			PrintWriter out = response.getWriter();
 			out.print("Admin created " + createdAdmin);
@@ -47,7 +47,7 @@ public class loginController extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.print(e.toString());
 			// System.out.println(e.toString());
-		}*/
+		}
 	}
 
 	/**
@@ -56,20 +56,24 @@ public class loginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		/*
-		 * String login = request.getParameter("login"); String password =
-		 * request.getParameter("password"); User user = new
-		 * UserDao().userLogin(login, password); if (user != null) {
-		 * request.getSession().setAttribute("connectedUser", user);
-		 * ServletContext application = getServletContext(); ArrayList<User>
-		 * users = (ArrayList<User>) application.getAttribute("users"); if
-		 * (users == null) { List<User> listUser = new UserDao().getUsers();
-		 * application.setAttribute("users", listUser); }
-		 * response.sendRedirect("welcome.jsp"); } else {
-		 * request.setAttribute("error", "Compte introuvable!");
-		 * getServletContext().getRequestDispatcher("login.jsp").forward(
-		 * request, response); }
-		 */
+
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");
+		User user = new UserDao().userLogin(login, password);
+		if (user != null) {
+			request.getSession().setAttribute("connectedUser", user);
+			ServletContext application = getServletContext();
+			ArrayList<User> users = (ArrayList<User>) application.getAttribute("users");
+			if (users == null) {
+				List<User> listUser = new UserDao().getUsers();
+				application.setAttribute("users", listUser);
+			}
+			response.sendRedirect("welcome.jsp");
+		} else {
+			request.setAttribute("error", "Compte introuvable!");
+			getServletContext().getRequestDispatcher("login.jsp").forward(request, response);
+		}
+
 	}
 
 }
