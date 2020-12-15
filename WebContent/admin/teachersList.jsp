@@ -1,3 +1,8 @@
+<%@page import="java.util.List"%>
+<%@page import="gestInscri.models.entity.Enseignant"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -40,7 +45,8 @@
 											<h3 class="nk-block-title page-title">Liste des
 												Enseignants</h3>
 											<div class="nk-block-des text-soft">
-												<p>Vous avez un total de xx Enseignants.</p>
+												<p>Vous avez un total de ${enseignantList.size() }
+													Enseignants.</p>
 											</div>
 										</div>
 										<!-- .nk-block-head-content -->
@@ -117,62 +123,66 @@
 											</div>
 										</div>
 										<!-- .nk-tb-item -->
-										<div class="nk-tb-item">
-											<div class="nk-tb-col nk-tb-col-check">
-												<div
-													class="custom-control custom-control-sm custom-checkbox notext">
-													<input type="checkbox" class="custom-control-input"
-														id="uid1"> <label class="custom-control-label"
-														for="uid1"></label>
-												</div>
-											</div>
-											<div class="nk-tb-col">
-												<a href="#">
-													<div class="user-card">
-														<div class="user-avatar bg-primary">
-															<span>AJ</span>
-														</div>
-														<div class="user-info">
-															<span class="tb-lead">Ahmed Jmal<span
-																class="dot dot-success d-md-none ml-1"></span></span> <span>ahmedjmal@gmail.com</span>
-														</div>
+										<c:forEach var="enseignant" items="${enseignantList}"
+											varStatus="index">
+											<div class="nk-tb-item">
+												<div class="nk-tb-col nk-tb-col-check">
+													<div
+														class="custom-control custom-control-sm custom-checkbox notext">
+														<input type="checkbox" class="custom-control-input"
+															id="uid1"> <label class="custom-control-label"
+															for="uid1"></label>
 													</div>
-												</a>
-											</div>
-
-											<div class="nk-tb-col tb-col-md">
-												<span>+216 25-xxx-xxx</span>
-											</div>
-											<div class="nk-tb-col tb-col-lg">
-												<span>Informatique</span>
-											</div>
-
-											<div class="nk-tb-col nk-tb-col-tools">
-												<ul class="nk-tb-actions gx-1">
-													<li class="nk-tb-action-hidden"><a href="#"
-														class="btn btn-trigger btn-icon" data-toggle="tooltip"
-														data-placement="top" title="Send Email"> <em
-															class="icon ni ni-mail-fill"></em>
-													</a></li>
-													<li class="nk-tb-action-hidden"></li>
-													<li>
-														<div class="drodown">
-															<a href="#"
-																class="dropdown-toggle btn btn-icon btn-trigger"
-																data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-															<div class="dropdown-menu dropdown-menu-right">
-																<ul class="link-list-opt no-bdr">
-																	<li><a href="#"><em
-																			class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
-																	<li><a href="#"><em class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
-
-																</ul>
+												</div>
+												<div class="nk-tb-col">
+													<a href="#">
+														<div class="user-card">
+															<div class="user-avatar bg-primary">
+																<span>${enseignant.getUser().getProfilImageText() }</span>
+															</div>
+															<div class="user-info">
+																<span class="tb-lead">${enseignant.getUser().getFullName() }<span
+																	class="dot dot-success d-md-none ml-1"></span></span> <span>${enseignant.getUser().getMail() }</span>
 															</div>
 														</div>
-													</li>
-												</ul>
+													</a>
+												</div>
+
+												<div class="nk-tb-col tb-col-md">
+													<span>+216 ${enseignant.getTelephone() }</span>
+												</div>
+												<div class="nk-tb-col tb-col-lg">
+													<span>${enseignant.getDepartement() }</span>
+												</div>
+
+												<div class="nk-tb-col nk-tb-col-tools">
+													<ul class="nk-tb-actions gx-1">
+														<li class="nk-tb-action-hidden"><a href="#"
+															class="btn btn-trigger btn-icon" data-toggle="tooltip"
+															data-placement="top" title="Send Email"> <em
+																class="icon ni ni-mail-fill"></em>
+														</a></li>
+														<li class="nk-tb-action-hidden"></li>
+														<li>
+															<div class="drodown">
+																<a href="#"
+																	class="dropdown-toggle btn btn-icon btn-trigger"
+																	data-toggle="dropdown"><em
+																	class="icon ni ni-more-h"></em></a>
+																<div class="dropdown-menu dropdown-menu-right">
+																	<ul class="link-list-opt no-bdr">
+																		<li><a href="#"><em
+																				class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
+																		<li><a href="#"><em class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
+
+																	</ul>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
 											</div>
-										</div>
+										</c:forEach>
 										<!-- .nk-tb-item -->
 									</div>
 									<!-- .nk-tb-list -->

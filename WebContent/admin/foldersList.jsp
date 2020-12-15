@@ -1,6 +1,10 @@
+<%@page import="java.util.List"%>
+<%@page import="gestInscri.models.entity.Candidat"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
-
 <head>
 <base href="../">
 <meta charset="utf-8">
@@ -237,65 +241,79 @@
 														</div>
 														<div class="nk-tb-col nk-tb-col-tools">
 															<ul class="nk-tb-actions gx-1 my-n1">
-																<li>
-																	
-																</li>
+																<li>Actions</li>
 															</ul>
 														</div>
 													</div>
 													<!-- .nk-tb-item -->
-													<div class="nk-tb-item">
-														<div class="nk-tb-col nk-tb-col-check">
-															<div
-																class="custom-control custom-control-sm custom-checkbox notext">
-																<input type="checkbox" class="custom-control-input"
-																	id="uid1"> <label class="custom-control-label"
-																	for="uid1"></label>
+													<c:forEach var="candidat" items="${candidatList}"
+														varStatus="index">
+														<div class="nk-tb-item">
+															<div class="nk-tb-col nk-tb-col-check">
+																<div
+																	class="custom-control custom-control-sm custom-checkbox notext">
+																	<input type="checkbox" class="custom-control-input"
+																		id="uid1"> <label class="custom-control-label"
+																		for="uid1"></label>
+																</div>
+															</div>
+															<div class="nk-tb-col">
+																<span class="tb-lead"><a href="#">#${candidat.getId()
+																		}</a></span>
+															</div>
+															<div class="nk-tb-col tb-col-md">
+																<span class="tb-sub">${candidat.getUser().getFullName() }</span>
+															</div>
+
+															<div class="nk-tb-col tb-col-sm">
+																<span class="tb-sub">${candidat.getUser().getMail() }</span>
+															</div>
+															<div class="nk-tb-col tb-col-md">
+																<span class="tb-sub text-primary">01-01-2020</span>
+															</div>
+															<div class="nk-tb-col">
+																<c:choose>
+																	<c:when test="${candidat.getStatus() !=null}">
+																		<span class="badge badge-success">${candidat.getStatus()}</span>
+																	</c:when>
+																	<c:otherwise>
+																		<span class="badge badge-gray">-</span>
+																	</c:otherwise>
+																</c:choose>
+																<!--  <span class="dot bg-warning d-mb-none"></span> <span
+																	class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex">On
+																	Hold</span>-->
+															</div>
+															<div class="nk-tb-col nk-tb-col-tools">
+																<ul class="nk-tb-actions gx-1">
+																	<li class=""><a href="#"
+																		class="btn btn-icon btn-trigger btn-tooltip"
+																		title="Consulter le dossier" data-toggle="dropdown">
+																			<em class="icon ni ni-eye"></em>
+																	</a></li>
+																	<li>
+																		<div class="drodown mr-n1">
+																			<a href="#"
+																				class="dropdown-toggle btn btn-icon btn-trigger"
+																				data-toggle="dropdown"><em
+																				class="icon ni ni-more-h"></em></a>
+																			<div class="dropdown-menu dropdown-menu-right">
+																				<ul class="link-list-opt no-bdr">
+																					<li><a href="#"><em
+																							class="icon ni ni-user-add"></em><span>Affecter
+																								un enseignant</span></a></li>
+																					<li><a href="#"><em
+																							class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
+																					<li><a href="#"><em
+																							class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
+																				</ul>
+																			</div>
+																		</div>
+																	</li>
+																</ul>
 															</div>
 														</div>
-														<div class="nk-tb-col">
-															<span class="tb-lead"><a href="#">#3001</a></span>
-														</div>
-														<div class="nk-tb-col tb-col-md">
-															<span class="tb-sub">Foulen Ben foulen</span>
-														</div>
-
-														<div class="nk-tb-col tb-col-sm">
-															<span class="tb-sub">foulen.foulen@gmail.com</span>
-														</div>
-														<div class="nk-tb-col tb-col-md">
-															<span class="tb-sub text-primary">01-01-2020</span>
-														</div>
-														<div class="nk-tb-col">
-															<span class="dot bg-warning d-mb-none"></span> <span
-																class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex">On
-																Hold</span>
-														</div>
-														<div class="nk-tb-col nk-tb-col-tools">
-															<ul class="nk-tb-actions gx-1">
-																
-																<li class="nk-tb-action-hidden"><a href="#"
-																	class="btn btn-icon btn-trigger btn-tooltip"
-																	title="Consulter le dossier" data-toggle="dropdown"> <em
-																		class="icon ni ni-eye"></em></a></li>
-																<li>
-																	<div class="drodown mr-n1">
-																		<a href="#"
-																			class="dropdown-toggle btn btn-icon btn-trigger"
-																			data-toggle="dropdown"><em
-																			class="icon ni ni-more-h"></em></a>
-																		<div class="dropdown-menu dropdown-menu-right">
-																			<ul class="link-list-opt no-bdr">
-																				<li><a href="#"><em class="icon ni ni-user-add"></em><span>Affecter un enseignant</span></a></li>
-																				<li><a href="#"><em class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
-																				<li><a href="#"><em class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
-																			</ul>
-																		</div>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
+													</c:forEach>
 													<!-- .nk-tb-item -->
 													<!-- .nk-tb-item -->
 												</div>
