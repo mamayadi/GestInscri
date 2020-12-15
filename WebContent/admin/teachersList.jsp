@@ -17,7 +17,7 @@
 <%@ include file="/include/css.jsp"%>
 </head>
 
-<body class="nk-body bg-lighter npc-general has-sidebar ">
+<body class="nk-body bg-lighter npc-general has-sidebar dark-mode">
 	<div class="nk-app-root">
 		<!-- main @s -->
 		<div class="nk-main ">
@@ -78,7 +78,7 @@
 														</li>
 														<li class="nk-block-tools-opt"><a href="#"
 															class="btn btn-icon btn-primary d-md-none"><em
-																class="icon ni ni-plus"></em></a> <a href="#"
+																class="icon ni ni-plus"></em></a> <a href="<%=request.getContextPath()%>/admin/addTeacher.jsp"
 															class="btn btn-primary d-none d-md-inline-flex"><em
 																class="icon ni ni-plus"></em><span>Ajouter</span></a></li>
 													</ul>
@@ -162,7 +162,7 @@
 																data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
 															<div class="dropdown-menu dropdown-menu-right">
 																<ul class="link-list-opt no-bdr">
-																	<li><a href="#"><em
+																	<li><a href="<%= request.getContextPath() %>/admin/editTeacher.jsp"><em
 																			class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
 																	<li><a href="#"><em class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
 

@@ -15,7 +15,7 @@
     <%@ include file="/include/css.jsp"%>
 </head>
 
-<body class="nk-body bg-white npc-default pg-auth">
+<body class="nk-body bg-white npc-default pg-auth dark-mode">
     <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">

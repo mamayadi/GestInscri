@@ -39,7 +39,7 @@ public class loginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
+		/*try {
 			Admin createdAdmin = new AdminDao().createAdmin(new Admin("med", "ayadi", "admin@test.com", "123"));
 			PrintWriter out = response.getWriter();
 			out.print("Admin created " + createdAdmin);
@@ -47,7 +47,7 @@ public class loginController extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.print(e.toString());
 			// System.out.println(e.toString());
-		}
+		}*/
 	}
 
 	/**
