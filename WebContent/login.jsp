@@ -17,7 +17,7 @@
 <%@ include file="/include/css.jsp"%>
 </head>
 
-<body class="nk-body bg-white npc-default pg-auth">
+<body class="nk-body bg-white npc-default pg-auth dark-mode">
 	<div class="nk-app-root">
 		<!-- main @s -->
 		<div class="nk-main ">
@@ -43,7 +43,7 @@
 									<div class="nk-block-head-content">
 										<h4 class="nk-block-title">Se connecter</h4>
 										<div class="nk-block-des">
-											<p>Accédez au panneau Gestion Inscrit via votre email et
+											<p>Accï¿½dez au panneau Gestion Inscrit via votre email et
 												mot de passe.</p>
 										</div>
 									</div>
@@ -63,7 +63,7 @@
 											<label class="form-label" for="password">Mot de passe</label>
 											<a class="link link-primary link-sm"
 												href="html/pages/auths/auth-reset-v2.html">Mot de passe
-												oublié?</a>
+												oubliï¿½?</a>
 										</div>
 										<div class="form-control-wrap">
 											<a href="#" class="form-icon form-icon-right passcode-switch"
@@ -85,7 +85,7 @@
 								</form>
 								<div class="form-note-s2 text-center pt-4">
 									Nouveau sur notre plateforme? <a
-										href="<%=request.getContextPath()%>/register.jsp">Créer un
+										href="<%=request.getContextPath()%>/register.jsp">Crï¿½er un
 										compte</a>
 								</div>
 								<!--  <div class="text-center pt-4 pb-3">
@@ -126,17 +126,17 @@
 													<li><a href="#" class="language-item"> <img
 															src="<%=request.getContextPath()%>/images/flags/spanish.png"
 															alt="" class="language-flag"> <span
-															class="language-name">Español</span>
+															class="language-name">Espaï¿½ol</span>
 													</a></li>
 													<li><a href="#" class="language-item"> <img
 															src="<%=request.getContextPath()%>/images/flags/french.png"
 															alt="" class="language-flag"> <span
-															class="language-name">Français</span>
+															class="language-name">Franï¿½ais</span>
 													</a></li>
 													<li><a href="#" class="language-item"> <img
 															src="<%=request.getContextPath()%>/images/flags/turkey.png"
 															alt="" class="language-flag"> <span
-															class="language-name">Türkçe</span>
+															class="language-name">Tï¿½rkï¿½e</span>
 													</a></li>
 												</ul>
 											</div></li>
