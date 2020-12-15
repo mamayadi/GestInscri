@@ -1,13 +1,14 @@
 package gestInscri.models.entity;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,29 +20,39 @@ import gestInscri.enums.Roles;
  */
 @Entity
 @Table(name = "candidat")
-public class Candidat  {
+public class Candidat implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.ALL)
 	private User user;
-	@Column(name = "adresse")
+	@Column(name = "adresse", nullable = true)
 	private String adresse;
-	@Column(name = "documentsPedagogiques")
-	private ArrayList<String> documentsPedagogiques = new ArrayList<String>();
-	@Column(name = "status")
+	@OneToOne(cascade=CascadeType.ALL, optional = true)
+	private DocumentsPedagogiques documentsPedagogiques;
+	@Column(name = "status", nullable = true)
 	private CandidatStatus status;
-	@Column(name = "inscrit")
+	@Column(name = "inscrit", nullable = true)
 	private boolean inscrit = false;
+	@ManyToOne(cascade=CascadeType.ALL, optional = true)
+	private Enseignant enseignant;
 
-	public Candidat(String nom, String prenom, String mail, String password, String adresse,
-			ArrayList<String> documentsPedagogiques) {
+	public Candidat(String nom, String prenom, String mail, String password) {
 		this.user = new User(nom, prenom, mail, password, Roles.Candidat);
-		this.adresse = adresse;
-		this.documentsPedagogiques = documentsPedagogiques;
 	}
-	
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Candidat() {
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -54,11 +65,11 @@ public class Candidat  {
 		this.adresse = adresse;
 	}
 
-	public ArrayList<String> getDocumentsPedagogiques() {
+	public DocumentsPedagogiques getDocumentsPedagogiques() {
 		return documentsPedagogiques;
 	}
 
-	public void setDocumentsPedagogiques(ArrayList<String> documentsPedagogiques) {
+	public void setDocumentsPedagogiques(DocumentsPedagogiques documentsPedagogiques) {
 		this.documentsPedagogiques = documentsPedagogiques;
 	}
 
@@ -80,9 +91,5 @@ public class Candidat  {
 
 	public User getUser() {
 		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 }

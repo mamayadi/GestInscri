@@ -17,6 +17,10 @@ import gestInscri.enums.Roles;
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -41,11 +45,6 @@ public class User implements Serializable {
 	}
 
 	public User() {
-		this.nom = null;
-		this.prenom = null;
-		this.mail = null;
-		this.password = null;
-		this.role = null;
 	}
 
 	public int getId() {
@@ -94,6 +93,10 @@ public class User implements Serializable {
 
 	public String getFullName() {
 		return nom + ' ' + prenom.toUpperCase();
+	}
+
+	public String getProfilImageText() {
+		return nom.substring(0, 1).toUpperCase() + prenom.substring(0, 1).toUpperCase();
 	}
 
 }
