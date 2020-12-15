@@ -1,5 +1,5 @@
 <c:if test="${connectedUser == null }">
-	<c:redirect url="login.jsp" />
+	<c:redirect url="/login.jsp" />
 </c:if>
 <div class="nk-header nk-header-fixed is-light">
 	<div class="container-fluid">

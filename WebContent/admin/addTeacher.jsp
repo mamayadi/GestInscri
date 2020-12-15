@@ -52,11 +52,12 @@
 											<div class="card-head">
 												<h5 class="card-title">Ajouter un nouveau Enseignant</h5>
 											</div>
-											<form action="#" class="gy-3">
+											<form name='addEnseignantForm' method='POST'
+												action='addEnseignant' class="gy-3">
 												<div class="row g-3 align-center">
 													<div class="col-lg-5">
 														<div class="form-group">
-															<label class="form-label" for="site-name">Nom de
+															<label class="form-label" for="nom">Nom de
 																l'Enseignant</label> <span class="form-note">Specifer le
 																nom de l'Enseignant.</span>
 														</div>
@@ -64,7 +65,8 @@
 													<div class="col-lg-7">
 														<div class="form-group">
 															<div class="form-control-wrap">
-																<input type="text" class="form-control" id="Tname">
+																<input type="text" class="form-control" name="nom"
+																	id="nom">
 															</div>
 														</div>
 													</div>
@@ -80,7 +82,8 @@
 													<div class="col-lg-7">
 														<div class="form-group">
 															<div class="form-control-wrap">
-																<input type="text" class="form-control" id="Tfname">
+																<input type="text" class="form-control" name="prenom"
+																	id="prenom">
 															</div>
 														</div>
 													</div>
@@ -89,15 +92,16 @@
 												<div class="row g-3 align-center">
 													<div class="col-lg-5">
 														<div class="form-group">
-															<label class="form-label">Adresse mail</label> <span
-																class="form-note">Specifer l'E-mail de
+															<label class="form-label" for="email">Adresse
+																mail</label> <span class="form-note">Specifer l'E-mail de
 																l'Enseignant.</span>
 														</div>
 													</div>
 													<div class="col-lg-7">
 														<div class="form-group">
 															<div class="form-control-wrap">
-																<input type="text" class="form-control" id="Temail">
+																<input type="email" class="form-control" name="email"
+																	id="email">
 															</div>
 														</div>
 													</div>
@@ -106,15 +110,16 @@
 												<div class="row g-3 align-center">
 													<div class="col-lg-5">
 														<div class="form-group">
-															<label class="form-label">T&egrave;l&egrave;phone</label>
-															<span class="form-note">Specifer le num&egrave;ro
-																T&egrave;l&egrave;phone de l'Enseignant.</span>
+															<label class="form-label" for="telephone">T&eacute;l&eacute;phone</label>
+															<span class="form-note">Specifer le num&eacute;ro
+																T&eacute;l&eacute;phone de l'Enseignant.</span>
 														</div>
 													</div>
 													<div class="col-lg-7">
 														<div class="form-group">
 															<div class="form-control-wrap">
-																<input type="text" class="form-control" id="Ttel">
+																<input type="tel" class="form-control" name="telephone"
+																	id="telephone">
 															</div>
 														</div>
 													</div>
@@ -122,22 +127,22 @@
 												<div class="row g-3 align-center">
 													<div class="col-lg-5">
 														<div class="form-group">
-															<label class="form-label">D&egrave;partement</label> <span
-																class="form-note">Specifer le D&egrave;partement
-																de l'Enseignant.</span>
+															<label class="form-label" for="departement">D&eacute;partement</label>
+															<span class="form-note">Specifer le
+																D&eacute;partement de l'Enseignant.</span>
 														</div>
 													</div>
 													<div class="col-lg-7">
 														<div class="form-group">
 															<div class="form-control-wrap">
 																<!-- <input type="text" class="form-control" id="Tdep"> -->
-																<select class="form-control" id="Tdep">
-																	<option>G&egrave;nie Informatique</option>
-																	<option>G&egrave;nie Industriel</option>
-																	<option>G&egrave;nie Civil</option>
-																	<option>G&egrave;nie M&egrave;canique</option>
+																<select class="form-control" name="departement"
+																	id="departement">
+																	<option>G&eacute;nie Informatique</option>
+																	<option>G&eacute;nie Industriel</option>
+																	<option>G&eacute;nie Civil</option>
+																	<option>G&eacute;nie M&eacute;canique</option>
 																</select>
-
 															</div>
 														</div>
 													</div>
@@ -146,24 +151,29 @@
 												<div class="row g-3 align-center">
 													<div class="col-lg-5">
 														<div class="form-group">
-															<label class="form-label">Mot de passe</label> <span
-																class="form-note">password must contain at least
-																6 characters including upper + lowercase and numbers.</span>
+															<label class="form-label" for="password">Mot de
+																passe</label> <span class="form-note">le mot de passe
+																doit contenir au moins 6 caract&egrave;res dont
+																majuscules + minuscules et chiffres.</span>
 														</div>
 													</div>
 													<div class="col-lg-7">
 														<div class="form-group">
 															<div class="form-control-wrap">
-																<input type="password" class="form-control" id="Tpass">
+																<input type="password" class="form-control"
+																	name="password" id="password">
 															</div>
 														</div>
 													</div>
 												</div>
-
+												<c:if test="${error != null }">
+													<p style="color: red;">${error }</p>
+												</c:if>
 												<div class="row g-3">
 													<div class="col-lg-7 offset-lg-5">
 														<div class="form-group mt-2">
-															<button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
+															<input type="submit" class="btn btn-lg btn-primary"
+																value="Enregistrer" />
 														</div>
 													</div>
 												</div>
@@ -188,7 +198,8 @@
 	<!-- app-root @e -->
 	<!-- JavaScript -->
 	<%@ include file="/include/js.jsp"%>
-	<script src="<%= request.getContextPath() %>>/assets/js/example-toastr.js?ver=2.2.0"></script>
+	<script
+		src="<%=request.getContextPath()%>>/assets/js/example-toastr.js?ver=2.2.0"></script>
 </body>
 
 </html>

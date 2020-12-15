@@ -102,9 +102,6 @@ public class loginController extends HttpServlet {
 		if (enseignantList != null) {
 			request.getSession().setAttribute("enseignantList", enseignantList);
 		}
-		System.out.println(adminList);
-		System.out.println(enseignantList);
-		System.out.println(candidatList);
 	}
 
 }
