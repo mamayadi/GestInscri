@@ -17,7 +17,7 @@
 <%@ include file="/include/css.jsp"%>
 </head>
 
-<body class="nk-body bg-white npc-default pg-auth">
+<body class="nk-body bg-white npc-default pg-auth dark-mode">
 	<div class="nk-app-root">
 		<!-- main @s -->
 		<div class="nk-main ">
@@ -43,7 +43,7 @@
 									<div class="nk-block-head-content">
 										<h4 class="nk-block-title">S'inscrire</h4>
 										<div class="nk-block-des">
-											<p>Créer un nouveau compte</p>
+											<p>Crï¿½er un nouveau compte</p>
 										</div>
 									</div>
 								</div>
@@ -91,7 +91,7 @@
 									</div>
 								</form>
 								<div class="form-note-s2 text-center pt-4">
-									Vous avez déja une compte? <a
+									Vous avez dï¿½ja une compte? <a
 										href="<%=request.getContextPath()%>/login.jsp"><strong>Connectez-vous</strong></a>
 								</div>
 								<!-- <div class="text-center pt-4 pb-3">
@@ -130,15 +130,15 @@
 													</a></li>
 													<li><a href="#" class="language-item"> <img
 															src="./images/flags/spanish.png" alt=""
-															class="language-flag"> <span class="language-name">Español</span>
+															class="language-flag"> <span class="language-name">Espaï¿½ol</span>
 													</a></li>
 													<li><a href="#" class="language-item"> <img
 															src="./images/flags/french.png" alt=""
-															class="language-flag"> <span class="language-name">Français</span>
+															class="language-flag"> <span class="language-name">Franï¿½ais</span>
 													</a></li>
 													<li><a href="#" class="language-item"> <img
 															src="./images/flags/turkey.png" alt=""
-															class="language-flag"> <span class="language-name">Türkçe</span>
+															class="language-flag"> <span class="language-name">Tï¿½rkï¿½e</span>
 													</a></li>
 												</ul>
 											</div></li>

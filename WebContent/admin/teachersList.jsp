@@ -22,7 +22,7 @@
 <%@ include file="/include/css.jsp"%>
 </head>
 
-<body class="nk-body bg-lighter npc-general has-sidebar ">
+<body class="nk-body bg-lighter npc-general has-sidebar dark-mode">
 	<div class="nk-app-root">
 		<!-- main @s -->
 		<div class="nk-main ">
@@ -84,7 +84,7 @@
 														</li>
 														<li class="nk-block-tools-opt"><a href="#"
 															class="btn btn-icon btn-primary d-md-none"><em
-																class="icon ni ni-plus"></em></a> <a href="#"
+																class="icon ni ni-plus"></em></a> <a href="<%=request.getContextPath()%>/admin/addTeacher.jsp"
 															class="btn btn-primary d-none d-md-inline-flex"><em
 																class="icon ni ni-plus"></em><span>Ajouter</span></a></li>
 													</ul>
@@ -111,10 +111,10 @@
 												<span class="sub-text">Profil Enseignant</span>
 											</div>
 											<div class="nk-tb-col tb-col-md">
-												<span class="sub-text">Téléphone</span>
+												<span class="sub-text">Tï¿½lï¿½phone</span>
 											</div>
 											<div class="nk-tb-col tb-col-lg">
-												<span class="sub-text">Département</span>
+												<span class="sub-text">Dï¿½partement</span>
 											</div>
 											<div class="nk-tb-col nk-tb-col-tools">
 												<ul class="nk-tb-actions gx-1 my-n1">
@@ -155,25 +155,24 @@
 													<span>${enseignant.getDepartement() }</span>
 												</div>
 
-												<div class="nk-tb-col nk-tb-col-tools">
-													<ul class="nk-tb-actions gx-1">
-														<li class="nk-tb-action-hidden"><a href="#"
-															class="btn btn-trigger btn-icon" data-toggle="tooltip"
-															data-placement="top" title="Send Email"> <em
-																class="icon ni ni-mail-fill"></em>
-														</a></li>
-														<li class="nk-tb-action-hidden"></li>
-														<li>
-															<div class="drodown">
-																<a href="#"
-																	class="dropdown-toggle btn btn-icon btn-trigger"
-																	data-toggle="dropdown"><em
-																	class="icon ni ni-more-h"></em></a>
-																<div class="dropdown-menu dropdown-menu-right">
-																	<ul class="link-list-opt no-bdr">
-																		<li><a href="#"><em
-																				class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
-																		<li><a href="#"><em class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
+											<div class="nk-tb-col nk-tb-col-tools">
+												<ul class="nk-tb-actions gx-1">
+													<li class="nk-tb-action-hidden"><a href="#"
+														class="btn btn-trigger btn-icon" data-toggle="tooltip"
+														data-placement="top" title="Send Email"> <em
+															class="icon ni ni-mail-fill"></em>
+													</a></li>
+													<li class="nk-tb-action-hidden"></li>
+													<li>
+														<div class="drodown">
+															<a href="#"
+																class="dropdown-toggle btn btn-icon btn-trigger"
+																data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+															<div class="dropdown-menu dropdown-menu-right">
+																<ul class="link-list-opt no-bdr">
+																	<li><a href="<%= request.getContextPath() %>/admin/editTeacher.jsp"><em
+																			class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
+																	<li><a href="#"><em class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
 
 																	</ul>
 																</div>
