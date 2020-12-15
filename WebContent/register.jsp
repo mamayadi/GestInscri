@@ -29,11 +29,11 @@
 						<div class="brand-logo pb-4 text-center">
 							<a href="html/index.html" class="logo-link"> <img
 								class="logo-light logo-img logo-img-lg"
-								src="<%=request.getContextPath()%>/images/logo.png"
-								srcset="<%=request.getContextPath()%>/images/logo2x.png 2x"
+								src="<%=request.getContextPath()%>/images/ipsas/logo.png"
+								srcset="<%=request.getContextPath()%>/images/ipsas/logo2x.png"
 								alt="logo"> <img class="logo-dark logo-img logo-img-lg"
-								src="<%=request.getContextPath()%>/images/logo-dark.png"
-								srcset="<%=request.getContextPath()%>/images/logo-dark2x.png 2x"
+								src="<%=request.getContextPath()%>/images/ipsas/logo.png"
+								srcset="<%=request.getContextPath()%>/images/ipsas/logo2x.png"
 								alt="logo-dark">
 							</a>
 						</div>
@@ -47,7 +47,8 @@
 										</div>
 									</div>
 								</div>
-								<form action="html/pages/auths/auth-success-v2.html">
+								<form name="registerForm" method='POST'
+									action='GestInscri/registerController'>
 									<div class="form-group">
 										<label class="form-label" for="nom">Nom</label> <input
 											type="text" class="form-control form-control-lg" name="nom"
@@ -81,6 +82,9 @@
                                             <label class="custom-control-label" for="checkbox">I agree to Dashlite <a href="#">Privacy Policy</a> &amp; <a href="#"> Terms.</a></label>
                                         </div>
                                     </div>-->
+									<c:if test="${error != null }">
+										<p style="color: red;">${error }</p>
+									</c:if>
 									<div class="form-group">
 										<input type="submit" class="btn btn-lg btn-primary btn-block"
 											value="Inscrire" />
