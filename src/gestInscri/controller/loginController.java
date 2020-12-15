@@ -14,8 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import gestInscri.enums.Roles;
 import gestInscri.models.dao.AdminDao;
+import gestInscri.models.dao.CandidatDao;
+import gestInscri.models.dao.EnseignantDao;
 import gestInscri.models.dao.UserDao;
 import gestInscri.models.entity.Admin;
+import gestInscri.models.entity.Candidat;
+import gestInscri.models.entity.Enseignant;
 import gestInscri.models.entity.User;
 
 /**
@@ -24,6 +28,10 @@ import gestInscri.models.entity.User;
 @WebServlet("/loginController")
 public class loginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	UserDao userDao = new UserDao();
+	CandidatDao candidatDao = new CandidatDao();
+	EnseignantDao enseignantDao = new EnseignantDao();
+	AdminDao adminDao = new AdminDao();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -47,6 +55,11 @@ public class loginController extends HttpServlet {
 		 * catch (Exception e) { PrintWriter out = response.getWriter();
 		 * out.print(e.toString()); // System.out.println(e.toString()); }
 		 */
+		/*
+		 * Enseignant ens = enseignantDao.createEnseignants( new
+		 * Enseignant("Ahmed", "Jmal", "ahmed.jmal@test.com", "123", 25252525,
+		 * "Informatique"));
+		 */
 	}
 
 	/**
@@ -57,11 +70,12 @@ public class loginController extends HttpServlet {
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		User user = new UserDao().userLogin(email, password);
+		User user = userDao.userLogin(email, password);
 		if (user != null) {
 			request.getSession().setAttribute("connectedUser", user);
 			ServletContext application = getServletContext();
 			if (user.getRole() == Roles.Admin) {
+				getAdminSession(request, response);
 				response.sendRedirect(request.getContextPath() + "/admin/index.jsp");
 			} else if (user.getRole() == Roles.Enseignant) {
 				response.sendRedirect(request.getContextPath() + "/Enseignant/index.jsp");
@@ -69,11 +83,28 @@ public class loginController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/candidat/index.jsp");
 			}
 		} else {
-			request.setAttribute("error", "Compte introuvable!"+ user);
-			getServletContext().getRequestDispatcher("/login.jsp").forward(request,
-					response);
+			request.setAttribute("error", "Compte introuvable!");
+			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 		}
+	}
 
+	protected void getAdminSession(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<Candidat> candidatList = candidatDao.getCandidats();
+		if (candidatList != null) {
+			request.getSession().setAttribute("candidatList", candidatList);
+		}
+		List<Admin> adminList = adminDao.getAdmins();
+		if (adminList != null) {
+			request.getSession().setAttribute("adminList", adminList);
+		}
+		List<Enseignant> enseignantList = enseignantDao.getEnseignants();
+		if (enseignantList != null) {
+			request.getSession().setAttribute("enseignantList", enseignantList);
+		}
+		System.out.println(adminList);
+		System.out.println(enseignantList);
+		System.out.println(candidatList);
 	}
 
 }

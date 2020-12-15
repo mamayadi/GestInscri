@@ -23,5 +23,6 @@
 		<mapping class="gestInscri.models.entity.Candidat" />
 		<mapping class="gestInscri.models.entity.Enseignant" />
 		<mapping class="gestInscri.models.entity.Entretien" />
+		<mapping class="gestInscri.models.entity.DocumentsPedagogiques" />
 	</session-factory>
 </hibernate-configuration>
