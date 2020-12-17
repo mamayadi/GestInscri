@@ -54,13 +54,13 @@ public class registerController extends HttpServlet {
 			if (registredCandidat != null) {
 				request.getSession().setAttribute("connectedUser", registredCandidat.getUser());
 				ServletContext application = getServletContext();
-				response.sendRedirect(request.getContextPath() + "/Enseignant/index.jsp");
+				response.sendRedirect(request.getContextPath() + "/enseignant/index.jsp");
 			} else {
-				request.setAttribute("error", "Probleme lors de création du compte!");
+				request.setAttribute("error", "Probleme lors de crï¿½ation du compte!");
 				getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 			}
 		} else {
-			request.setAttribute("error", "Données invalid!");
+			request.setAttribute("error", "Donnï¿½es invalid!");
 			getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 		}
 

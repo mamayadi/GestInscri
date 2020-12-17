@@ -79,7 +79,7 @@ public class loginController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/admin/index.jsp");
 			} else if (user.getRole() == Roles.Enseignant) {
 				getEnseignantSession(request, response, user);
-				response.sendRedirect(request.getContextPath() + "/Enseignant/index.jsp");
+				response.sendRedirect(request.getContextPath() + "/enseignant/index.jsp");
 			} else {
 				response.sendRedirect(request.getContextPath() + "/candidat/index.jsp");
 			}

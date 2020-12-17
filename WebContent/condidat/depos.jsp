@@ -25,7 +25,7 @@
       <!-- main @s -->
       <div class="nk-main">
         <!-- sidebar @s -->
-        <%@ include file="/include/menu.jsp"%> 
+        <!-- <--%@ include file="/include/menu.jsp"%> -->
         <!-- sidebar @e -->
         <!-- wrap @s -->
         <div class="nk-wrap">
@@ -44,8 +44,6 @@
                         <div class="nk-block-des">
                           <p class="lead">
                             Application pour la gestion des inscription.
-
-
                           </p>
                         </div>
                       </div>
@@ -71,7 +69,7 @@
                             <div class="nk-wizard-head">
                               <h5>Step 1</h5>
                             </div>
-                            <div class="nk-wizard-content">
+                             <div class="nk-wizard-content"> 
                               <div class="row gy-3">
                                 <div class="col-md-6">
                                   <div class="form-group">
@@ -114,8 +112,8 @@
                                     <label
                                       class="form-label"
                                       for="fw-email-address"
-                                      >Addresse mail </label
-                                    >
+                                      >Addresse mail
+                                    </label>
                                     <div class="form-control-wrap">
                                       <input
                                         type="text"
@@ -134,8 +132,8 @@
                                     <label
                                       class="form-label"
                                       for="fw-mobile-number"
-                                      >Num&eacute;ro T&eacute;l&eacute;phone </label
-                                    >
+                                      >Num&eacute;ro T&eacute;l&eacute;phone
+                                    </label>
                                     <div class="form-control-wrap">
                                       <input
                                         type="text"
@@ -164,9 +162,7 @@
                                           name="fw-nationality"
                                           required
                                         >
-                                        <option value="tn">
-                                            Tunisia
-                                          </option>
+                                          <option value="tn">Tunisia</option>
                                           <option value="us">
                                             United State
                                           </option>
@@ -186,164 +182,185 @@
                                 </div>
                                 <!-- .col -->
                               </div>
-                            </div>
+                            </div> 
                             <div class="nk-wizard-head">
                               <h5>Step 2</h5>
                             </div>
                             <div class="nk-wizard-content">
+                              <!-- .row -->
                               <div class="row gy-3">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                   <div class="form-group">
                                     <label class="form-label" for="customFile"
-                                      >votre diplome</label
+                                      >Diplome</label
                                     >
                                     <div class="custom-file">
-                                        <input type="file" multiple class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                      <input
+                                        type="file"
+                                        multiple
+                                        class="custom-file-input"
+                                        id="customFile"
+                                      />
+                                      <label
+                                        class="custom-file-label"
+                                        for="customFile"
+                                        >Choose file</label
+                                      >
                                     </div>
                                   </div>
                                 </div>
-                                <!-- .col -->
-                              </div>
-                              <!-- .row -->
-                              <div class="row gy-3">
-                                <div class="col-md-6">
+
+                                <div class="col-md-4">
                                   <div class="form-group">
                                     <label class="form-label" for="customFile"
                                       >Attestation de reussite</label
                                     >
                                     <div class="custom-file">
-                                        <input type="file" multiple class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!-- .col -->
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                    <label
-                                      class="form-label"
-                                      for="fw-re-password"
-                                      >Re-Password</label
-                                    >
-                                    <div class="form-control-wrap">
                                       <input
-                                        type="password"
-                                        data-msg="Required"
-                                        class="form-control required"
-                                        id="fw-re-password"
-                                        name="fw-re-password"
-                                        required
+                                        type="file"
+                                        multiple
+                                        class="custom-file-input"
+                                        id="customFile"
                                       />
+                                      <label
+                                        class="custom-file-label"
+                                        for="customFile"
+                                        >Choose file</label
+                                      >
                                     </div>
                                   </div>
                                 </div>
-                                <!-- .col -->
-                                <div class="col-md-12">
-                                  <div class="custom-control custom-checkbox">
-                                    <input
-                                      type="checkbox"
-                                      data-msg="Required"
-                                      class="custom-control-input required"
-                                      name="fw-policy"
-                                      id="fw-policy"
-                                      required
-                                    />
-                                    <label
-                                      class="custom-control-label"
-                                      for="fw-policy"
-                                      >I agreed Terms and policy</label
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label class="form-label" for="customFile"
+                                      >Note Bac</label
                                     >
+                                    <div class="custom-file">
+                                      <input
+                                        type="file"
+                                        multiple
+                                        class="custom-file-input"
+                                        id="customFile"
+                                      />
+                                      <label
+                                        class="custom-file-label"
+                                        for="customFile"
+                                        >Choose file</label
+                                      >
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                              <!-- .row -->
-                            </div>
-                            <div class="nk-wizard-head">
-                              <h5>Step 3</h5>
-                            </div>
-                            <div class="nk-wizard-content">
-                              <div class="row gy-2">
-                                <div class="col-md-12">
+                              <div class="nk-divider divider md"></div>
+                              <div class="row gy-3">
+                                <div class="col-md-4">
                                   <div class="form-group">
-                                    <label
-                                      class="form-label"
-                                      for="fw-token-address"
-                                      >Token Address</label
+                                    <label class="form-label" for="customFile"
+                                      >R&eacute;lev&eacute; des notes ( 1er
+                                      ann&eacute;e )</label
                                     >
-                                    <div class="form-control-wrap">
+                                    <div class="custom-file">
                                       <input
-                                        type="text"
-                                        data-msg="Required"
-                                        class="form-control required"
-                                        id="fw-token-address"
-                                        name="fw-token-address"
-                                        required
+                                        type="file"
+                                        multiple
+                                        class="custom-file-input"
+                                        id="customFile"
                                       />
+                                      <label
+                                        class="custom-file-label"
+                                        for="customFile"
+                                        >Choose file</label
+                                      >
                                     </div>
                                   </div>
                                 </div>
-                                <div class="col-md-12">
-                                  <label class="form-label"
-                                    >I want to contribute</label
-                                  >
-                                  <ul class="d-flex flex-wrap g-2">
-                                    <li>
-                                      <div class="custom-control custom-radio">
-                                        <input
-                                          type="radio"
-                                          data-msg="Required"
-                                          class="custom-control-input required"
-                                          name="fw-ethcount"
-                                          id="fw-lt1eth"
-                                          required
-                                        />
-                                        <label
-                                          class="custom-control-label"
-                                          for="fw-lt1eth"
-                                          >Less than 1 ETH</label
-                                        >
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div class="custom-control custom-radio">
-                                        <input
-                                          type="radio"
-                                          data-msg="Required"
-                                          class="custom-control-input required"
-                                          name="fw-ethcount"
-                                          id="fw-ov1eth"
-                                          required
-                                        />
-                                        <label
-                                          class="custom-control-label"
-                                          for="fw-ov1eth"
-                                          >Over than 1 ETH</label
-                                        >
-                                      </div>
-                                    </li>
-                                  </ul>
+
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label class="form-label" for="customFile"
+                                      >R&eacute;lev&eacute; des notes (
+                                      2&eacute;me ann&eacute;e )</label
+                                    >
+                                    <div class="custom-file">
+                                      <input
+                                        type="file"
+                                        multiple
+                                        class="custom-file-input"
+                                        id="customFile"
+                                      />
+                                      <label
+                                        class="custom-file-label"
+                                        for="customFile"
+                                        >Choose file</label
+                                      >
+                                    </div>
+                                  </div>
                                 </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label class="form-label" for="customFile"
+                                      >R&eacute;lev&eacute; des notes (
+                                      3&eacute;me ann&eacute;e )</label
+                                    >
+                                    <div class="custom-file">
+                                      <input
+                                        type="file"
+                                        multiple
+                                        class="custom-file-input"
+                                        id="customFile"
+                                      />
+                                      <label
+                                        class="custom-file-label"
+                                        for="customFile"
+                                        >Choose file</label
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="nk-divider divider md"></div>
+                              <div class="row gy-3">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label
-                                      class="form-label"
-                                      for="fw-telegram-username"
-                                      >Telegram Username</label
+                                    <label class="form-label" for="customFile"
+                                      >Rapport de Stage(s)</label
                                     >
-                                    <div class="form-control-wrap">
+                                    <div class="custom-file">
                                       <input
-                                        type="text"
-                                        data-msg="Required"
-                                        class="form-control required"
-                                        id="fw-telegram-username"
-                                        name="fw-telegram-username"
-                                        required
+                                        type="file"
+                                        multiple
+                                        class="custom-file-input"
+                                        id="customFile"
                                       />
+                                      <label
+                                        class="custom-file-label"
+                                        for="customFile"
+                                        >Choose file</label
+                                      >
                                     </div>
                                   </div>
                                 </div>
-                                <!-- .col -->
+
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="form-label" for="customFile"
+                                      >Lettre de Recommmandation</label
+                                    >
+                                    <div class="custom-file">
+                                      <input
+                                        type="file"
+                                        multiple
+                                        class="custom-file-input"
+                                        id="customFile"
+                                      />
+                                      <label
+                                        class="custom-file-label"
+                                        for="customFile"
+                                        >Choose file</label
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                               <!-- .row -->
                             </div>
