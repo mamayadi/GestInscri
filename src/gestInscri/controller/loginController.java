@@ -81,7 +81,7 @@ public class loginController extends HttpServlet {
 				getEnseignantSession(request, response, user);
 				response.sendRedirect(request.getContextPath() + "/enseignant/index.jsp");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/candidat/index.jsp");
+				response.sendRedirect(request.getContextPath() + "/candidat/depos.jsp");
 			}
 		} else {
 			request.setAttribute("error", "Compte introuvable!");

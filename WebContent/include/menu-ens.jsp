@@ -4,11 +4,11 @@
 		<div class="nk-sidebar-brand">
 			<a href="<%=request.getContextPath()%>" class="logo-link nk-sidebar-logo"> <img
 				class="logo-light logo-img"
-				src="<%=request.getContextPath()%>/images/logo.png"
-				srcset="<%=request.getContextPath()%>/images/logo2x.png 2x"
+				src="<%=request.getContextPath()%>/images/ipsas/logo.png"
+				srcset="<%=request.getContextPath()%>/images/ipsas/logo2x.png 2x"
 				alt="logo"> <img class="logo-dark logo-img"
-				src="<%=request.getContextPath()%>/images/logo-dark.png"
-				srcset="<%=request.getContextPath()%>/images/logo-dark2x.png 2x"
+				src="<%=request.getContextPath()%>/images/ipsas/logo-dark.png"
+				srcset="<%=request.getContextPath()%>/images/ipsas/logo-dark2x.png 2x"
 				alt="logo-dark">
 			</a>
 		</div>

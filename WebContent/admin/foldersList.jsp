@@ -227,14 +227,14 @@
 															<span>#Id</span>
 														</div>
 														<div class="nk-tb-col tb-col-md">
-															<span>Nom & Prénom</span>
+															<span>Nom & Prï¿½nom</span>
 														</div>
 
 														<div class="nk-tb-col tb-col-sm">
 															<span>E-mail</span>
 														</div>
 														<div class="nk-tb-col tb-col-md">
-															<span>Date dépos</span>
+															<span>Date dï¿½pos</span>
 														</div>
 														<div class="nk-tb-col tb-col-sm">
 															<span>Status</span>
@@ -258,7 +258,7 @@
 																</div>
 															</div>
 															<div class="nk-tb-col">
-																<span class="tb-lead"><a href="#">#${candidat.getId()
+																<span class="tb-lead"><a href="<%=request.getContextPath()%>/admin/folderDetails.jsp">#${candidat.getId()
 																		}</a></span>
 															</div>
 															<div class="nk-tb-col tb-col-md">
@@ -299,12 +299,12 @@
 																				class="icon ni ni-more-h"></em></a>
 																			<div class="dropdown-menu dropdown-menu-right">
 																				<ul class="link-list-opt no-bdr">
-																					<li><a href="#"><em
+																					<li><a href="<%=request.getContextPath()%>/admin/folderDetails.jsp"><em
 																							class="icon ni ni-user-add"></em><span>Affecter
 																								un enseignant</span></a></li>
-																					<li><a href="#"><em
-																							class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
-																					<li><a href="#"><em
+																					<!-- <li><a href="<%=request.getContextPath()%>/admin/"><em
+																							class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li> -->
+																					<li><a href="<%=request.getContextPath()%>/admin/"><em
 																							class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
 																				</ul>
 																			</div>
