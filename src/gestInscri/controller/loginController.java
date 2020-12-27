@@ -78,6 +78,7 @@ public class loginController extends HttpServlet {
 				getAdminSession(request, response);
 				response.sendRedirect(request.getContextPath() + "/admin/index.jsp");
 			} else if (user.getRole() == Roles.Enseignant) {
+				getEnseignantSession(request, response, user);
 				response.sendRedirect(request.getContextPath() + "/Enseignant/index.jsp");
 			} else {
 				response.sendRedirect(request.getContextPath() + "/candidat/index.jsp");
@@ -101,6 +102,14 @@ public class loginController extends HttpServlet {
 		List<Enseignant> enseignantList = enseignantDao.getEnseignants();
 		if (enseignantList != null) {
 			request.getSession().setAttribute("enseignantList", enseignantList);
+		}
+	}
+	
+	protected void getEnseignantSession(HttpServletRequest request, HttpServletResponse response, User user)
+			throws ServletException, IOException {
+		Enseignant enseignant = enseignantDao.getEnseignantByUser(user);
+		if(enseignant != null){
+			request.getSession().setAttribute("connectedEnseignant", enseignant);
 		}
 	}
 

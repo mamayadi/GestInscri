@@ -9,9 +9,11 @@
 					data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
 			</div>
 			<div class="nk-header-brand d-xl-none">
-				<a href="html/index.html" class="logo-link"> 
-					<img class="logo-light logo-img" src="../images/ipsas/logo.png" srcset="../images/ipsas/logo2x.png 2x" alt="logo">
-                    <img class="logo-dark logo-img" src="../images/ipsas/logo-dark.png" srcset="../images/ipsas/logo-dark2x.png 2x" alt="logo-dark">
+				<a href="html/index.html" class="logo-link"> <img
+					class="logo-light logo-img" src="../images/ipsas/logo.png"
+					srcset="../images/ipsas/logo2x.png 2x" alt="logo"> <img
+					class="logo-dark logo-img" src="../images/ipsas/logo-dark.png"
+					srcset="../images/ipsas/logo-dark2x.png 2x" alt="logo-dark">
 				</a>
 			</div>
 			<!-- .nk-header-brand -->
@@ -22,7 +24,10 @@
 							<em class="icon ni ni-card-view"></em>
 						</div>
 						<div class="nk-news-text">
-							<p>GestInscri v0.1 <span> Gestion d'inscription pour Institut Polytechnique Priv� des Sciences Avanc�es</span></p>
+							<p>
+								GestInscri v0.1 <span> Gestion d'inscription pour
+									Institut Polytechnique Privé des Sciences Avancées</span>
+							</p>
 							<em class="icon ni ni-external"></em>
 						</div>
 					</a>
@@ -81,8 +86,8 @@
 							</div>
 							<div class="dropdown-inner">
 								<ul class="link-list">
-									<li><a href="#"><em class="icon ni ni-signout"></em><span>Sign
-												out</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/logoutController"><em class="icon ni ni-signout"></em>
+											 <span>Sign out</span></a></li>
 								</ul>
 							</div>
 						</div></li>
