@@ -15,7 +15,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png" />
     <!-- Page Title  -->
-    <title>Dossier | IPSAS Admin</title>
+    <title>Test | IPSAS Admin</title>
     <!-- StyleSheets  -->
     <%@ include file="/include/css.jsp"%>
   </head>
@@ -82,9 +82,7 @@
                                   </h4>
                                   <span>Gestion d'inscription IPSAS</span>
                                 </div>
-                                <div
-                                  class="col-3 d-flex justify-content-center"
-                                >
+                                <div class="col-3 d-flex justify-content-center">
                                   <img
                                     src="<%=request.getContextPath()%>/images/ipsas/logo-dark.png"
                                     alt="logo"
@@ -116,70 +114,61 @@
                                   <h6 class="invoice-to">
                                     Documents du dossier#<span>000756</span>
                                   </h6>
-                                  <div class="row">
-                                    <div class="col-6">
-                                      <div class="mb-1">
-                                        <span
-                                          ><a href="#" target="_blank"
-                                            >Diplome</a
-                                          ></span
-                                        >
-                                      </div>
-                                      <div class="mb-1">
-                                        <span
-                                          ><a href="#" target="_blank"
-                                            >Attestation de reussite</a
-                                          ></span
-                                        >
-                                      </div>
-                                      <div class="mb-1">
-                                        <span
-                                          ><a href="#" target="_blank"
-                                            >Note de Bac</a
-                                          ></span
-                                        >
-                                      </div>
-                                      <div class="mb-1">
-                                        <span
-                                          ><a href="#" target="_blank"
-                                            >R&eacute;lev&eacute; des notes (
-                                            1er ann&eacute;e )
-                                          </a></span
-                                        >
-                                      </div>
-                                    </div>
-                                    <div class="col-6">
-                                      <div class="mb-1">
-                                        <span
-                                          ><a href="#" target="_blank"
-                                            >R&eacute;lev&eacute; des notes (
-                                            2&eacute;me ann&eacute;e )
-                                          </a></span
-                                        >
-                                      </div>
-                                      <div class="mb-1">
-                                        <span
-                                          ><a href="#" target="_blank"
-                                            >R&eacute;lev&eacute; des notes (
-                                            3&eacute;me ann&eacute;e )
-                                          </a></span
-                                        >
-                                      </div>
-                                      <div class="mb-1">
-                                        <span
-                                          ><a href="#" target="_blank"
-                                            >Rapport de Stage(s)</a
-                                          ></span
-                                        >
-                                      </div>
-                                      <div class="mb-1">
-                                        <span
-                                          ><a href="#" target="_blank"
-                                            >Lettre de Recommmandation</a
-                                          ></span
-                                        >
-                                      </div>
-                                    </div>
+                                  <div class="mb-1">
+                                    <span
+                                      ><a href="#" target="_blank"
+                                        >Diplome</a
+                                      ></span
+                                    >
+                                  </div>
+                                  <div class="mb-1">
+                                    <span
+                                      ><a href="#" target="_blank"
+                                        >Attestation de reussite</a
+                                      ></span
+                                    >
+                                  </div>
+                                  <div class="mb-1">
+                                    <span
+                                      ><a href="#" target="_blank"
+                                        >Note de Bac</a
+                                      ></span
+                                    >
+                                  </div>
+                                  <div class="mb-1">
+                                    <span
+                                      ><a href="#" target="_blank"
+                                        >R&eacute;lev&eacute; des notes ( 1er ann&eacute;e )
+                                      </a></span
+                                    >
+                                  </div>
+                                  <div class="mb-1">
+                                    <span
+                                      ><a href="#" target="_blank"
+                                        >R&eacute;lev&eacute; des notes ( 2&eacute;me ann&eacute;e )
+                                      </a></span
+                                    >
+                                  </div>
+                                  <div class="mb-1">
+                                    <span
+                                      ><a href="#" target="_blank"
+                                        >R&eacute;lev&eacute; des notes ( 3&eacute;me ann&eacute;e )
+                                      </a></span
+                                    >
+                                  </div>
+                                  <div class="mb-1">
+                                    <span
+                                      ><a href="#" target="_blank"
+                                        >Rapport de Stage(s)</a
+                                      ></span
+                                    >
+                                  </div>
+                                  <div class="mb-1">
+                                    <span
+                                      ><a href="#" target="_blank"
+                                        >Lettre de Recommmandation</a
+                                      ></span
+                                    >
                                   </div>
                                 </div>
                               </div>
@@ -188,38 +177,28 @@
                             <!-- product details table-->
                             <div
                               class="invoice-product-details table-responsive mx-md-25"
-                            >
-                              <form action="#" method="POST">
-                                <div
-                                  class="d-flex align-items-center justify-content-center"
-                                >
-                                  <span
-                                    >Affect&eacute; ce dossier &aacute;</span
-                                  >
-
-                                  <div class="col-4">
-                                    <div class="form-group">
-                                      <div class="form-control-wrap">
-                                        <select
-                                          class="form-select"
-                                          data-search="on"
-                                        >
-                                          <option>Enseignat name 1</option>
-                                          <option>Enseignat name 2</option>
-                                          <option>Enseignat name 3</option>
-                                          <option>Enseignat name 4</option>
-                                        </select>
-                                      </div>
+                            ><form action="#" method="POST">
+                              <div class="d-flex align-items-center justify-content-center"><span>Affect&eacute; ce dossier &aacute;</span>
+                                
+                                <div class="col-4">
+                                  <div class="form-group">
+                                    
+                                    <div class="form-control-wrap">
+                                    <select
+                                        class="form-select"
+                                        data-search="on"
+                                      >
+                                        <option>Enseignat name 1</option>
+                                        <option>Enseignat name 2</option>
+                                        <option>Enseignat name 3</option>
+                                        <option>Enseignat name 4</option>
+                                    </select>
                                     </div>
                                   </div>
-                                  <button
-                                    class="btn btn-secondary"
-                                    type="submit"
-                                  >
-                                    Affecter
-                                  </button>
                                 </div>
-                              </form>
+                                <button class="btn btn-secondary" type="submit">Affecter</button>
+                              </div>
+                            </form>
                             </div>
                             <div class="nk-divider divider md"></div>
 
@@ -233,39 +212,31 @@
                           class="card invoice-action-wrapper shadow-none border"
                         >
                           <div class="card-body">
-                            <div class="invoice-action-btn">
-                              <div>
-                                <span class="d-flex justify-content-center"
-                                  >Status de dossier</span
-                                >
-                                <h5
-                                  class="text-warning d-flex justify-content-center"
-                                >
-                                  En Cours d'Examan
-                                </h5>
-                                <!-- <h5 class="text-success d-flex justify-content-center"> Accept&eacute;</h5>
+                            <div class="invoice-action-btn ">
+                                <div>
+                                <span class="d-flex justify-content-center">Status de dossier</span>
+                                    <h5 class="text-warning d-flex justify-content-center"> En Cours d'Examan</h5>
+                                    <!-- <h5 class="text-success d-flex justify-content-center"> Accept&eacute;</h5>
                                     <h5 class="text-danger d-flex justify-content-center"> Refus</h5> -->
-                              </div>
+                                </div>
+                                    
+                                
                             </div>
                           </div>
                         </div>
                         <div
                           class="card invoice-action-wrapper shadow-none border"
                         >
-                          <div class="card-body">
-                            <div class="invoice-action-btn">
-                              <div>
-                                <span class="d-flex justify-content-center"
-                                  >Status de candidat</span
-                                >
-                                <!-- <h5 class="text-warning d-flex justify-content-center"> En Cours d'Examan</h5> -->
-                                <h5
-                                  class="text-success d-flex justify-content-center"
-                                >
-                                  Accept&eacute;
-                                </h5>
-                                <!-- <h5 class="text-danger d-flex justify-content-center"> Refus</h5> -->
-                              </div>
+                        <div class="card-body">
+                            <div class="invoice-action-btn ">
+                                <div>
+                                <span class="d-flex justify-content-center">Status de candidat</span>
+                                    <!-- <h5 class="text-warning d-flex justify-content-center"> En Cours d'Examan</h5> -->
+                                    <h5 class="text-success d-flex justify-content-center"> Accept&eacute;</h5>
+                                    <!-- <h5 class="text-danger d-flex justify-content-center"> Refus</h5> -->
+                                </div>
+                                    
+                                
                             </div>
                           </div>
                         </div>
