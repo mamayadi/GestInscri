@@ -9,3 +9,5 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+WebContent/META-INF/MANIFEST.MF
+WebContent/META-INF/maven/GestInscri/GestInscri/pom.properties

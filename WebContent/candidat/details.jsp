@@ -15,7 +15,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png" />
     <!-- Page Title  -->
-    <title>Depos de dossier | IPSAS Admin</title>
+    <title>Détails | IPSAS Admin</title>
     <!-- StyleSheets  -->
     <%@ include file="/include/css.jsp"%>
   </head>
@@ -41,7 +41,7 @@
                     <div class="nk-block-between g-3">
                       <div class="nk-block-head-content">
                         <h3 class="nk-block-title page-title">
-                          CONDIDAT :
+                          CANDIDAT :
                           <strong class="text-primary small"
                             >${connectedUser.getFullName() }</strong
                           >
@@ -80,7 +80,7 @@
                             <li class="nav-item">
                               <a class="nav-link active" data-toggle="tab" href="#infos"
                                 ><em class="icon ni ni-user-circle"></em
-                                ><span>Personal</span></a
+                                ><span>Informations personnelles</span></a
                               >
                             </li>
                             <li class="nav-item">

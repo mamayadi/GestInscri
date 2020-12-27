@@ -22,7 +22,7 @@
 							<em class="icon ni ni-card-view"></em>
 						</div>
 						<div class="nk-news-text">
-							<p>GestInscri v0.1 <span> Gestion d'inscription pour Institut Polytechnique Priv� des Sciences Avanc�es</span></p>
+							<p>GestInscri v0.1 <span> Gestion d'inscription pour Institut Polytechnique Priv&eacute; des Sciences Avanc&eacute;es</span></p>
 							<em class="icon ni ni-external"></em>
 						</div>
 					</a>

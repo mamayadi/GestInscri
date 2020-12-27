@@ -80,7 +80,7 @@ public class loginController extends HttpServlet {
 			} else if (user.getRole() == Roles.Enseignant) {
 				response.sendRedirect(request.getContextPath() + "/enseignant/index.jsp");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/candidat/index.jsp");
+				response.sendRedirect(request.getContextPath() + "/candidat/depos.jsp");
 			}
 		} else {
 			request.setAttribute("error", "Compte introuvable!");
