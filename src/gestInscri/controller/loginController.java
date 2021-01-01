@@ -81,7 +81,7 @@ public class loginController extends HttpServlet {
 				getEnseignantSession(request, response, user);
 				response.sendRedirect(request.getContextPath() + "/enseignant/index.jsp");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/candidat/depos.jsp");
+				getCandidatSession(request, response, user);
 			}
 		} else {
 			request.setAttribute("error", "Compte introuvable!");
@@ -110,6 +110,18 @@ public class loginController extends HttpServlet {
 		Enseignant enseignant = enseignantDao.getEnseignantByUser(user);
 		if(enseignant != null){
 			request.getSession().setAttribute("connectedEnseignant", enseignant);
+		}
+	}
+	
+	protected void getCandidatSession(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException{
+		Candidat candidat = candidatDao.getCandidatByUser(user);
+		if(candidat != null) {
+			request.getSession().setAttribute("connectedCandidat", candidat);
+			if(candidat.getDocumentsPedagogiques() == null){
+				response.sendRedirect(request.getContextPath() + "/candidat/depos.jsp");
+			} else {
+				response.sendRedirect(request.getContextPath() + "/candidat/details.jsp");
+			}
 		}
 	}
 

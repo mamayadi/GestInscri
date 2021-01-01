@@ -1,3 +1,5 @@
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -63,11 +65,15 @@
                       <div class="card card-bordered">
                         <div class="card-inner">
                           <form
-                            action="#"
+                          id="deposForm"
+                          method="POST"
+                          enctype='multipart/form-data'
+                            action='/GestInscri/deposController'
+                            
                             class="nk-wizard nk-wizard-simple is-alter"
                           >
                             <div class="nk-wizard-head">
-                              <h5>Step 1</h5>
+                              <h5>Information personnelle</h5>
                             </div>
                              <div class="nk-wizard-content"> 
                               <div class="row gy-3">
@@ -75,7 +81,7 @@
                                   <div class="form-group">
                                     <label
                                       class="form-label"
-                                      for="fw-first-name"
+                                      for="nom"
                                       >Nom</label
                                     >
                                     <div class="form-control-wrap">
@@ -83,8 +89,9 @@
                                         type="text"
                                         data-msg="Required"
                                         class="form-control required"
-                                        id="fw-first-name"
-                                        name="fw-first-name"
+                                        id="nom"
+                                        name="nom"
+                                        value="${connectedCandidat.getUser().getNom()}"
                                         required
                                       />
                                     </div>
@@ -92,7 +99,7 @@
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label class="form-label" for="fw-last-name"
+                                    <label class="form-label" for="prenom"
                                       >Pr&eacute;nom</label
                                     >
                                     <div class="form-control-wrap">
@@ -100,8 +107,9 @@
                                         type="text"
                                         data-msg="Required"
                                         class="form-control required"
-                                        id="fw-last-name"
-                                        name="fw-last-name"
+                                        id="prenom"
+                                        name="prenom"
+                                        value="${connectedCandidat.getUser().getPrenom()}"
                                         required
                                       />
                                     </div>
@@ -111,8 +119,8 @@
                                   <div class="form-group">
                                     <label
                                       class="form-label"
-                                      for="fw-email-address"
-                                      >Addresse mail
+                                      for="email"
+                                      >Adresse email
                                     </label>
                                     <div class="form-control-wrap">
                                       <input
@@ -120,9 +128,11 @@
                                         data-msg="Required"
                                         data-msg-email="Wrong Email"
                                         class="form-control required email"
-                                        id="fw-email-address"
-                                        name="fw-email-address"
+                                        id="email"
+                                        name="email"
+                                        value="${connectedCandidat.getUser().getMail()}"
                                         required
+                                        disabled
                                       />
                                     </div>
                                   </div>
@@ -131,21 +141,23 @@
                                   <div class="form-group">
                                     <label
                                       class="form-label"
-                                      for="fw-mobile-number"
-                                      >Num&eacute;ro T&eacute;l&eacute;phone
+                                      for="adresse"
+                                      >Adresse
                                     </label>
                                     <div class="form-control-wrap">
                                       <input
                                         type="text"
                                         data-msg="Required"
                                         class="form-control required"
-                                        id="fw-mobile-number"
-                                        name="fw-mobile-number"
+                                        id="adresse"
+                                        name="adresse"
+                                        value="${connectedCandidat.getAdresse()}"
                                         required
                                       />
                                     </div>
                                   </div>
                                 </div>
+                                <!-- 
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label
@@ -180,18 +192,19 @@
                                     </div>
                                   </div>
                                 </div>
+                                -->
                                 <!-- .col -->
                               </div>
                             </div> 
                             <div class="nk-wizard-head">
-                              <h5>Step 2</h5>
+                              <h5>Documents Pedagogiques</h5>
                             </div>
                             <div class="nk-wizard-content">
                               <!-- .row -->
                               <div class="row gy-3">
                                 <div class="col-md-4">
                                   <div class="form-group">
-                                    <label class="form-label" for="customFile"
+                                    <label class="form-label" for="diplome"
                                       >Diplome</label
                                     >
                                     <div class="custom-file">
@@ -199,12 +212,13 @@
                                         type="file"
                                         multiple
                                         class="custom-file-input"
-                                        id="customFile"
+                                        id="diplome"
+                                        name="diplome"
                                       />
                                       <label
                                         class="custom-file-label"
-                                        for="customFile"
-                                        >Choose file</label
+                                        for="diplome"
+                                        >Choisir un fichier</label
                                       >
                                     </div>
                                   </div>
@@ -212,7 +226,7 @@
 
                                 <div class="col-md-4">
                                   <div class="form-group">
-                                    <label class="form-label" for="customFile"
+                                    <label class="form-label" for="attestationreussite"
                                       >Attestation de reussite</label
                                     >
                                     <div class="custom-file">
@@ -220,19 +234,20 @@
                                         type="file"
                                         multiple
                                         class="custom-file-input"
-                                        id="customFile"
+                                        id="attestationreussite"
+                                        name="attestationreussite"
                                       />
                                       <label
                                         class="custom-file-label"
-                                        for="customFile"
-                                        >Choose file</label
+                                        for="attestationreussite"
+                                        >Choisir un fichier</label
                                       >
                                     </div>
                                   </div>
                                 </div>
                                 <div class="col-md-4">
                                   <div class="form-group">
-                                    <label class="form-label" for="customFile"
+                                    <label class="form-label" for="noteBac"
                                       >Note Bac</label
                                     >
                                     <div class="custom-file">
@@ -240,12 +255,13 @@
                                         type="file"
                                         multiple
                                         class="custom-file-input"
-                                        id="customFile"
+                                        id="noteBac"
+                                        name="noteBac"
                                       />
                                       <label
                                         class="custom-file-label"
-                                        for="customFile"
-                                        >Choose file</label
+                                        for="noteBac"
+                                        >Choisir un fichier</label
                                       >
                                     </div>
                                   </div>
@@ -255,7 +271,7 @@
                               <div class="row gy-3">
                                 <div class="col-md-4">
                                   <div class="form-group">
-                                    <label class="form-label" for="customFile"
+                                    <label class="form-label" for="premiereAnnee"
                                       >R&eacute;lev&eacute; des notes ( 1er
                                       ann&eacute;e )</label
                                     >
@@ -264,12 +280,13 @@
                                         type="file"
                                         multiple
                                         class="custom-file-input"
-                                        id="customFile"
+                                        id="premiereAnnee"
+                                        name="premiereAnnee"
                                       />
                                       <label
                                         class="custom-file-label"
-                                        for="customFile"
-                                        >Choose file</label
+                                        for="premiereAnnee"
+                                        >Choisir un fichier</label
                                       >
                                     </div>
                                   </div>
@@ -277,7 +294,7 @@
 
                                 <div class="col-md-4">
                                   <div class="form-group">
-                                    <label class="form-label" for="customFile"
+                                    <label class="form-label" for="deuxiemeAnnee"
                                       >R&eacute;lev&eacute; des notes (
                                       2&eacute;me ann&eacute;e )</label
                                     >
@@ -286,19 +303,20 @@
                                         type="file"
                                         multiple
                                         class="custom-file-input"
-                                        id="customFile"
+                                        id="deuxiemeAnnee"
+                                        name="deuxiemeAnnee"
                                       />
                                       <label
                                         class="custom-file-label"
-                                        for="customFile"
-                                        >Choose file</label
+                                        for="deuxiemeAnnee"
+                                        >Choisir un fichier</label
                                       >
                                     </div>
                                   </div>
                                 </div>
                                 <div class="col-md-4">
                                   <div class="form-group">
-                                    <label class="form-label" for="customFile"
+                                    <label class="form-label" for="troisiemeAnnee"
                                       >R&eacute;lev&eacute; des notes (
                                       3&eacute;me ann&eacute;e )</label
                                     >
@@ -307,12 +325,13 @@
                                         type="file"
                                         multiple
                                         class="custom-file-input"
-                                        id="customFile"
+                                        id="troisiemeAnnee"
+                                        name="troisiemeAnnee"
                                       />
                                       <label
                                         class="custom-file-label"
-                                        for="customFile"
-                                        >Choose file</label
+                                        for="troisiemeAnnee"
+                                        >Choisir un fichier</label
                                       >
                                     </div>
                                   </div>
@@ -322,7 +341,7 @@
                               <div class="row gy-3">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label class="form-label" for="customFile"
+                                    <label class="form-label" for="rapportStage"
                                       >Rapport de Stage(s)</label
                                     >
                                     <div class="custom-file">
@@ -330,12 +349,13 @@
                                         type="file"
                                         multiple
                                         class="custom-file-input"
-                                        id="customFile"
+                                        id="rapportStage"
+                                        name="rapportStage"
                                       />
                                       <label
                                         class="custom-file-label"
-                                        for="customFile"
-                                        >Choose file</label
+                                        for="rapportStage"
+                                        >Choisir un fichier</label
                                       >
                                     </div>
                                   </div>
@@ -343,7 +363,7 @@
 
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label class="form-label" for="customFile"
+                                    <label class="form-label" for="lettreRecommandation"
                                       >Lettre de Recommmandation</label
                                     >
                                     <div class="custom-file">
@@ -351,12 +371,13 @@
                                         type="file"
                                         multiple
                                         class="custom-file-input"
-                                        id="customFile"
+                                        id="lettreRecommandation"
+                                        name="lettreRecommandation"
                                       />
                                       <label
                                         class="custom-file-label"
-                                        for="customFile"
-                                        >Choose file</label
+                                        for="lettreRecommandation"
+                                        >Choisir un fichier</label
                                       >
                                     </div>
                                   </div>

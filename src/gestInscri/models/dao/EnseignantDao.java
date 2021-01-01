@@ -39,7 +39,6 @@ public class EnseignantDao {
     		transaction = session.beginTransaction();
 			Query query = session.createQuery("from Enseignant e where e.user = :user", Enseignant.class);
 			query.setParameter("user", user);
-			System.out.println(query.getFirstResult());
 			List<Enseignant> enseignants = query.list();
 			transaction.commit();
 			if (enseignants.size() != 0) {

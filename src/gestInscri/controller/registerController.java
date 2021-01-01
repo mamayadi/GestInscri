@@ -48,19 +48,18 @@ public class registerController extends HttpServlet {
 		String prenom = request.getParameter("prenom");
 		String mail = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(nom + prenom + mail + password);
 		if (nom != null && prenom != null && mail != null && password != null) {
 			Candidat registredCandidat = candidatDao.createCandidat(new Candidat(nom, prenom, mail, password));
 			if (registredCandidat != null) {
 				request.getSession().setAttribute("connectedUser", registredCandidat.getUser());
 				ServletContext application = getServletContext();
-				response.sendRedirect(request.getContextPath() + "/enseignant/index.jsp");
+				response.sendRedirect(request.getContextPath() + "/candidat/depos.jsp");
 			} else {
-				request.setAttribute("error", "Probleme lors de cr�ation du compte!");
+				request.setAttribute("error", "Probleme lors de création du compte!");
 				getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 			}
 		} else {
-			request.setAttribute("error", "Donn�es invalid!");
+			request.setAttribute("error", "Données invalid!");
 			getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 		}
 

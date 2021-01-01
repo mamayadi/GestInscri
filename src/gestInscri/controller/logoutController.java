@@ -30,6 +30,7 @@ public class logoutController extends HttpServlet {
 			throws ServletException, IOException {
 		request.removeAttribute("connectedUser");
 		request.removeAttribute("connectedEnseignant");
+		request.removeAttribute("connectedCandidat");
 		request.removeAttribute("candidatList");
 		request.removeAttribute("adminList");
 		request.removeAttribute("enseignantList");

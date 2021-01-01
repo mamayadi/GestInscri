@@ -331,10 +331,10 @@
             headerTag: ".nk-wizard-head",
             bodyTag: ".nk-wizard-content",
             labels: {
-                finish: "Submit",
-                next: "Next",
-                previous: "Prev",
-                loading: "Loading ..."
+                finish: "Soumettre",
+                next: "Suivant",
+                previous: "Précédent",
+                loading: "Chargement..."
             },
             onStepChanging: function (event, currentIndex, newIndex)
             {
@@ -358,8 +358,7 @@
                 $wizard.validate().settings.ignore = ":disabled";
                 return $wizard.valid();
             },
-            onFinished: function (event, currentIndex){window.location.href = "#";}
-            
+            onFinished: function (event, currentIndex){document.getElementById('deposForm').submit();}
         }).validate({
             errorElement: "span",
             errorClass: "invalid",
