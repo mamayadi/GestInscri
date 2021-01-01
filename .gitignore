@@ -13,3 +13,5 @@ WebContent/META-INF/MANIFEST.MF
 WebContent/META-INF/maven/GestInscri/GestInscri/pom.properties
 WebConetnt/uploads/
 WebContent/uploads/*
+.classpath
+.settings/*
