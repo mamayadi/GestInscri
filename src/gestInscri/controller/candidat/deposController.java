@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import gestInscri.enums.CandidatStatus;
 import gestInscri.models.dao.CandidatDao;
 import gestInscri.models.entity.Candidat;
 import gestInscri.models.entity.DocumentsPedagogiques;
@@ -21,8 +22,11 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 /**
  * Servlet implementation class deposController
@@ -60,14 +64,85 @@ public class deposController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Candidat candidat = (Candidat) request.getSession().getAttribute("connectedCandidat");
-		// get the file chosen by the user
+		DocumentsPedagogiques docs;
+		if (candidat.getDocumentsPedagogiques() == null) {
+			docs = new DocumentsPedagogiques();
+		} else {
+			docs = candidat.getDocumentsPedagogiques();
+		}
+		// Adresse field
+		String adresse = request.getParameter("adresse");
+		if (adresse != null)
+			candidat.setAdresse(adresse);
+
+		// Diplome file
 		Part diplomePart = request.getPart("diplome");
-		if(diplomePart != null){
+		if (diplomePart != null) {
 			String uploadedDiplome = fileManger.saveFile(diplomePart, candidat.getUser());
-			DocumentsPedagogiques docs = new DocumentsPedagogiques();
 			docs.setDiplome(uploadedDiplome);
-			candidat.setDocumentsPedagogiques(docs);
-			candidatDao.updateCandidat(candidat);
+		}
+
+		// Attestation reussite file
+		Part attestationreussitePart = request.getPart("attestationreussite");
+		if (attestationreussitePart != null) {
+			String uploadedattestationreussite = fileManger.saveFile(attestationreussitePart, candidat.getUser());
+			docs.setAttestationreussite(uploadedattestationreussite);
+		}
+
+		// Note Bac file
+		Part noteBacPart = request.getPart("noteBac");
+		if (noteBacPart != null) {
+			String uploadednoteBac = fileManger.saveFile(noteBacPart, candidat.getUser());
+			docs.setNoteBac(uploadednoteBac);
+		}
+
+		// Premiere Annee file
+		Part premiereAnneePart = request.getPart("premiereAnnee");
+		if (premiereAnneePart != null) {
+			String uploadedpremiereAnnee = fileManger.saveFile(premiereAnneePart, candidat.getUser());
+			docs.setPremiereAnnee(uploadedpremiereAnnee);
+		}
+
+		// Deuxieme Annee file
+		Part deuxiemeAnneePart = request.getPart("deuxiemeAnnee");
+		if (deuxiemeAnneePart != null) {
+			String uploadeddeuxiemeAnnee = fileManger.saveFile(deuxiemeAnneePart, candidat.getUser());
+			docs.setDeuxiemeAnnee(uploadeddeuxiemeAnnee);
+		}
+
+		// Troisieme Annee file
+		Part troisiemeAnneePart = request.getPart("troisiemeAnnee");
+		if (troisiemeAnneePart != null) {
+			String uploadedtroisiemeAnnee = fileManger.saveFile(troisiemeAnneePart, candidat.getUser());
+			docs.setTroisiemeAnnee(uploadedtroisiemeAnnee);
+		}
+
+		// Rapport Stage files
+		List<Part> rapportStageParts = request.getParts().stream().filter(part -> "rapportStage".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList());
+		if (rapportStageParts != null) {
+			List<String> uploadedRapportStage = new ArrayList<String>();
+			for (Part rapportStagePart : rapportStageParts) {
+				uploadedRapportStage.add(fileManger.saveFile(rapportStagePart, candidat.getUser())) ;
+			}			
+			docs.setRapportStage(uploadedRapportStage);
+		}
+
+		// Lettre Recommandation files
+		List<Part> lettreRecommandationParts = request.getParts().stream().filter(part -> "lettreRecommandation".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList());
+		if (lettreRecommandationParts != null) {
+			List<String> uploadedLettreRecommandation = new ArrayList<String>();
+			for (Part lettreRecommandationPart : lettreRecommandationParts) {
+				uploadedLettreRecommandation.add(fileManger.saveFile(lettreRecommandationPart, candidat.getUser())) ;
+			}
+			docs.setLettreRecommandation(uploadedLettreRecommandation);
+		}
+
+		candidat.setDocumentsPedagogiques(docs);
+		candidat.setInscrit(false);
+		candidat.setStatus(CandidatStatus.EN_COURS);
+		Candidat updatedCandidat = candidatDao.updateCandidat(candidat);
+		if (updatedCandidat != null) {
+			response.sendRedirect(request.getContextPath() + "/candidat/details.jsp");
 		}
 	}
 

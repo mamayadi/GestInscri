@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="gestInscri.enums.CandidatStatus"%>
+<%@page import="gestInscri.models.entity.*"%>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -15,10 +18,17 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png" />
     <!-- Page Title  -->
-    <title>DÃ©tails | IPSAS Admin</title>
+    <title>Détails | IPSAS Admin</title>
     <!-- StyleSheets  -->
     <%@ include file="/include/css.jsp"%>
   </head>
+
+<%!
+public String getFileName(String path){
+	String[] pathStr = path.split("/");
+	return pathStr[pathStr.length-1];	
+}
+%>
 
   <body class="nk-body bg-lighter npc-general has-sidebar dark-mode">
     <div class="nk-app-root">
@@ -56,13 +66,27 @@
                             </li>
                             <li>
                               Status du Condidat:
-                              <span class="text-info"> Non-Inscri </span>
+                              <c:if test="${connectedCandidat.isInscrit() == false}">
+   								<span class="text-danger"> Non-Inscri </span>
+							  </c:if>                              
+							  <c:if test="${connectedCandidat.isInscrit() == true}">
+   								<span class="text-info"> Inscrit </span>
+							  </c:if>
                             </li>
                             <li>
                               Status du Dossier:
-                              <span class="text-warning">
-                                En cours d'evaluation
-                              </span>
+                              <c:if test="${connectedCandidat.getStatus() == CandidatStatus.EN_COURS}">
+   								<span class="text-warning"> En cours d'evaluation </span>
+							  </c:if>
+							  <c:if test="${connectedCandidat.getStatus() == CandidatStatus.ADMIS}">
+   								<span class="text-success"> Admis </span>
+							  </c:if>
+							  <c:if test="${connectedCandidat.getStatus() == CandidatStatus.NON_ADMIS}">
+   								<span class="text-danger"> Non admis </span>
+							  </c:if>
+							  <c:if test="${connectedCandidat.getStatus() == CandidatStatus.REFUS}">
+   								<span class="text-danger"> Refuser </span>
+							  </c:if>
                             </li>
                           </ul>
                         </div>
@@ -89,7 +113,7 @@
                                 ><span>Documents</span></a
                               >
                             </li>
-                            <li class="nav-item">
+                           <!--  <li class="nav-item">
                               <a
                                 class="nav-link"
                                 data-toggle="tab"
@@ -98,7 +122,7 @@
                                 ><span>Activities</span></a
                               >
                             </li>          
-                          </ul>
+                           --></ul>
                           <!-- .nav-tabs -->
                           <div class="tab-content">
                             <div class="tab-pane active card-inner" id="infos">
@@ -108,8 +132,7 @@
                                     Informations Personelles
                                   </h5>
                                   <p>
-                                    Basic info, like your name and address, that
-                                    you use on Nio Platform.
+                                    Vos informations personelles
                                   </p>
                                 </div>
                                 <!-- .nk-block-head -->
@@ -117,40 +140,40 @@
                                   <div class="profile-ud-item">
                                     <div class="profile-ud wider">
                                       <span class="profile-ud-label"
-                                        >Title</span
+                                        >Nom</span
                                       >
-                                      <span class="profile-ud-value">Mr.</span>
+                                      <span class="profile-ud-value">${connectedUser.getNom() }</span>
                                     </div>
                                   </div>
                                   <div class="profile-ud-item">
                                     <div class="profile-ud wider">
                                       <span class="profile-ud-label"
-                                        >Full Name</span
+                                        >Prenom</span
                                       >
                                       <span class="profile-ud-value"
-                                        >${connectedUser.getFullName() }</span
+                                        >${connectedUser.getPrenom() }</span
                                       >
                                     </div>
                                   </div>
                                   <div class="profile-ud-item">
                                     <div class="profile-ud wider">
                                       <span class="profile-ud-label"
-                                        >Date of Birth</span
+                                        >Adresse e-mail</span
                                       >
                                       <span class="profile-ud-value"
-                                        >10 Aug, 1980</span
+                                        >${connectedUser.getMail() }</span
                                       >
                                     </div>
                                   </div>
                                   <div class="profile-ud-item">
                                     <div class="profile-ud wider">
                                       <span class="profile-ud-label"
-                                        >Surname</span
+                                        >Adresse</span
                                       >
-                                      <span class="profile-ud-value">IO</span>
+                                      <span class="profile-ud-value">${connectedCandidat.getAdresse() }</span>
                                     </div>
                                   </div>
-                                  <div class="profile-ud-item">
+                                  <!-- <div class="profile-ud-item">
                                     <div class="profile-ud wider">
                                       <span class="profile-ud-label"
                                         >Mobile Number</span
@@ -169,18 +192,18 @@
                                         >info@softnio.com</span
                                       >
                                     </div>
-                                  </div>
+                                  </div> -->
                                 </div>
                                 <!-- .profile-ud-list -->
                               </div>
                               <!-- .nk-block -->
-                              <div class="nk-block">
+                              <!-- <div class="nk-block">
                                 <div class="nk-block-head nk-block-head-line">
                                   <h6 class="title overline-title text-base">
                                     Additional Information
                                   </h6>
                                 </div>
-                                <!-- .nk-block-head -->
+                                <!-- .nk-block-head 
                                 <div class="profile-ud-list">
                                   <div class="profile-ud-item">
                                     <div class="profile-ud wider">
@@ -223,9 +246,9 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- .profile-ud-list -->
-                              </div>
-                              <!-- .nk-block -->
+                                <!-- .profile-ud-list 
+                              </div>--> 
+                             <!-- .nk-block -->
                               <div class="nk-divider divider md"></div>
 
                               <!-- .nk-block -->
@@ -235,11 +258,10 @@
                               <div class="nk-block">
                                 <div class="nk-block-head">
                                   <h5 class="title">
-                                   Documents
+                                   Documents Pédagogiques
                                   </h5>
                                   <p>
-                                    Basic info, like your name and address, that
-                                    you use on Nio Platform.
+                                    Vos documents pédagogiques
                                   </p>
                                 </div>
                                 
@@ -251,17 +273,13 @@
                                         >Diplome</label
                                       >
                                       <div class="custom-file">
-                                        <input
-                                          type="file"
-                                          multiple
-                                          class="custom-file-input"
-                                          id="customFile"
-                                        />
-                                        <label
-                                          class="custom-file-label"
-                                          for="customFile"
-                                          >Choose file</label
-                                        >
+                                      <a target="_blank" href="<%=request.getContextPath()%>/${connectedCandidat.getDocumentsPedagogiques().getDiplome() }" >
+                                     <%
+                                     Candidat candidat = (Candidat) session.getAttribute("connectedCandidat");
+                                     DocumentsPedagogiques docsPedagogiques = candidat.getDocumentsPedagogiques();
+                                     out.print(getFileName(docsPedagogiques.getDiplome())); 
+                                     %>
+                                      </a>                                        
                                       </div>
                                     </div>
                                   </div>
@@ -272,17 +290,11 @@
                                         >Attestation de reussite</label
                                       >
                                       <div class="custom-file">
-                                        <input
-                                          type="file"
-                                          multiple
-                                          class="custom-file-input"
-                                          id="customFile"
-                                        />
-                                        <label
-                                          class="custom-file-label"
-                                          for="customFile"
-                                          >Choose file</label
-                                        >
+                                        <a target="_blank" href="<%=request.getContextPath()%>/${connectedCandidat.getDocumentsPedagogiques().getAttestationreussite() }" >
+                                        <%
+                                        out.print(getFileName(docsPedagogiques.getAttestationreussite()));
+                                        %>
+                                        </a>
                                       </div>
                                     </div>
                                   </div>
@@ -292,17 +304,11 @@
                                         >Note Bac</label
                                       >
                                       <div class="custom-file">
-                                        <input
-                                          type="file"
-                                          multiple
-                                          class="custom-file-input"
-                                          id="customFile"
-                                        />
-                                        <label
-                                          class="custom-file-label"
-                                          for="customFile"
-                                          >Choose file</label
-                                        >
+                                        <a target="_blank" href="<%=request.getContextPath()%>/${connectedCandidat.getDocumentsPedagogiques().getNoteBac() }" >
+                                        <%
+                                        out.print(getFileName(docsPedagogiques.getNoteBac()));
+                                        %>
+                                        </a>
                                       </div>
                                     </div>
                                   </div>
@@ -316,17 +322,11 @@
                                         ann&eacute;e )</label
                                       >
                                       <div class="custom-file">
-                                        <input
-                                          type="file"
-                                          multiple
-                                          class="custom-file-input"
-                                          id="customFile"
-                                        />
-                                        <label
-                                          class="custom-file-label"
-                                          for="customFile"
-                                          >Choose file</label
-                                        >
+                                        <a target="_blank" href="<%=request.getContextPath()%>/${connectedCandidat.getDocumentsPedagogiques().getPremiereAnnee() }" >
+                                        <%
+                                        out.print(getFileName(docsPedagogiques.getPremiereAnnee()));
+                                        %>
+                                        </a>
                                       </div>
                                     </div>
                                   </div>
@@ -338,17 +338,11 @@
                                         2&eacute;me ann&eacute;e )</label
                                       >
                                       <div class="custom-file">
-                                        <input
-                                          type="file"
-                                          multiple
-                                          class="custom-file-input"
-                                          id="customFile"
-                                        />
-                                        <label
-                                          class="custom-file-label"
-                                          for="customFile"
-                                          >Choose file</label
-                                        >
+                                        <a target="_blank" href="<%=request.getContextPath()%>/${connectedCandidat.getDocumentsPedagogiques().getDeuxiemeAnnee() }" >
+                                         <%
+                                        out.print(getFileName(docsPedagogiques.getDeuxiemeAnnee()));
+                                        %>
+                                        </a>
                                       </div>
                                     </div>
                                   </div>
@@ -359,17 +353,11 @@
                                         3&eacute;me ann&eacute;e )</label
                                       >
                                       <div class="custom-file">
-                                        <input
-                                          type="file"
-                                          multiple
-                                          class="custom-file-input"
-                                          id="customFile"
-                                        />
-                                        <label
-                                          class="custom-file-label"
-                                          for="customFile"
-                                          >Choose file</label
-                                        >
+                                        <a target="_blank" href="<%=request.getContextPath()%>/${connectedCandidat.getDocumentsPedagogiques().getTroisiemeAnnee() }" >
+                                        <%
+                                        out.print(getFileName(docsPedagogiques.getTroisiemeAnnee()));
+                                        %>
+                                        </a>
                                       </div>
                                     </div>
                                   </div>
@@ -382,17 +370,12 @@
                                         >Rapport de Stage(s)</label
                                       >
                                       <div class="custom-file">
-                                        <input
-                                          type="file"
-                                          multiple
-                                          class="custom-file-input"
-                                          id="customFile"
-                                        />
-                                        <label
-                                          class="custom-file-label"
-                                          for="customFile"
-                                          >Choose file</label
-                                        >
+                                      <c:forEach var="rapport" items="${connectedCandidat.getDocumentsPedagogiques().getRapportStage() }" varStatus="index">
+                                      	<a target="_blank" href="<%=request.getContextPath()%>/${rapport}" >
+                                      	${connectedCandidat.getDocumentsPedagogiques().getFileName(rapport) }
+                                      	</a><br/>
+                                      </c:forEach>
+                                        
                                       </div>
                                     </div>
                                   </div>
@@ -403,17 +386,11 @@
                                         >Lettre de Recommmandation</label
                                       >
                                       <div class="custom-file">
-                                        <input
-                                          type="file"
-                                          multiple
-                                          class="custom-file-input"
-                                          id="customFile"
-                                        />
-                                        <label
-                                          class="custom-file-label"
-                                          for="customFile"
-                                          >Choose file</label
-                                        >
+                                      <c:forEach var="lettreRecommandation" items="${connectedCandidat.getDocumentsPedagogiques().getLettreRecommandation() }" varStatus="index">
+                                      	<a target="_blank" href="<%=request.getContextPath()%>/${lettreRecommandation }" >
+                                      	${connectedCandidat.getDocumentsPedagogiques().getFileName(lettreRecommandation) }
+                                      	</a><br/>
+                                      </c:forEach>                                        
                                       </div>
                                     </div>
                                   </div>
@@ -426,7 +403,8 @@
 
                               <!-- .nk-block -->
                             </div>
-
+						
+							<!--  
                             <div class="tab-pane card-inner" id="acts">
                               <div class="nk-block">
                                 <div class="nk-block-head">
@@ -438,7 +416,7 @@
                                     you use on Nio Platform.
                                   </p>
                                 </div>
-                                <!-- .nk-block-head -->
+                                <!-- .nk-block-head 
                                 <div class="profile-ud-list">
                                   <div class="profile-ud-item">
                                     <div class="profile-ud wider">
@@ -497,16 +475,16 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- .profile-ud-list -->
+                                <!-- .profile-ud-list 
                               </div>
-                              <!-- .nk-block -->
+                              <!-- .nk-block 
                               <div class="nk-block">
                                 <div class="nk-block-head nk-block-head-line">
                                   <h6 class="title overline-title text-base">
                                     Additional Information
                                   </h6>
                                 </div>
-                                <!-- .nk-block-head -->
+                                <!-- .nk-block-head 
                                 <div class="profile-ud-list">
                                   <div class="profile-ud-item">
                                     <div class="profile-ud wider">
@@ -549,13 +527,14 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- .profile-ud-list -->
+                                <!-- .profile-ud-list 
                               </div>
-                              <!-- .nk-block -->
+                              <!-- .nk-block 
                               <div class="nk-divider divider md"></div>
 
-                              <!-- .nk-block -->
+                              <!-- .nk-block
                             </div>
+                          -->
                           </div>
                           <!-- .card-inner -->
                         </div>

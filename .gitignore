@@ -11,4 +11,5 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 WebContent/META-INF/MANIFEST.MF
 WebContent/META-INF/maven/GestInscri/GestInscri/pom.properties
-WebConetnt/uploads/*
+WebConetnt/uploads/
+WebContent/uploads/*

@@ -43,7 +43,7 @@
 									<div class="nk-block-head-content">
 										<h4 class="nk-block-title">Se connecter</h4>
 										<div class="nk-block-des">
-											<p>Accï¿½dez au panneau Gestion Inscrit via votre email et
+											<p>Accédez au panneau Gestion Inscrit via votre email et
 												mot de passe.</p>
 										</div>
 									</div>
@@ -85,7 +85,7 @@
 								</form>
 								<div class="form-note-s2 text-center pt-4">
 									Nouveau sur notre plateforme? <a
-										href="<%=request.getContextPath()%>/register.jsp">Crï¿½er un
+										href="<%=request.getContextPath()%>/register.jsp">Créer un
 										compte</a>
 								</div>
 								<!--  <div class="text-center pt-4 pb-3">
@@ -126,17 +126,17 @@
 													<li><a href="#" class="language-item"> <img
 															src="<%=request.getContextPath()%>/images/flags/spanish.png"
 															alt="" class="language-flag"> <span
-															class="language-name">Espaï¿½ol</span>
+															class="language-name">Español</span>
 													</a></li>
 													<li><a href="#" class="language-item"> <img
 															src="<%=request.getContextPath()%>/images/flags/french.png"
 															alt="" class="language-flag"> <span
-															class="language-name">Franï¿½ais</span>
+															class="language-name">Français</span>
 													</a></li>
 													<li><a href="#" class="language-item"> <img
 															src="<%=request.getContextPath()%>/images/flags/turkey.png"
 															alt="" class="language-flag"> <span
-															class="language-name">Tï¿½rkï¿½e</span>
+															class="language-name">Türkiye</span>
 													</a></li>
 												</ul>
 											</div></li>

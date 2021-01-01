@@ -109,12 +109,12 @@ public class DocumentsPedagogiques implements Serializable {
 		this.troisiemeAnnee = troisiemeAnnee;
 	}
 
-	public List<String> getRapportSatge() {
+	public List<String> getRapportStage() {
 		return rapportStage;
 	}
 
-	public void setRapportSatge(List<String> rapportSatge) {
-		this.rapportStage = rapportSatge;
+	public void setRapportStage(List<String> rapportStage) {
+		this.rapportStage = rapportStage;
 	}
 
 	public List<String> getLettreRecommandation() {
@@ -123,6 +123,11 @@ public class DocumentsPedagogiques implements Serializable {
 
 	public void setLettreRecommandation(List<String> lettreRecommandation) {
 		this.lettreRecommandation = lettreRecommandation;
+	}
+	
+	public String getFileName(String path){
+		String[] pathStr = path.split("/");
+		return pathStr[pathStr.length-1];	
 	}
 
 }
