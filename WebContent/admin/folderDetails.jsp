@@ -189,6 +189,7 @@
                             <div
                               class="invoice-product-details table-responsive mx-md-25"
                             >
+                            <div class="card-body pb-0 mx-25">
                               <form action="#" method="POST">
                                 <div
                                   class="d-flex align-items-center justify-content-center"
@@ -220,11 +221,10 @@
                                   </button>
                                 </div>
                               </form>
-                            </div>
-                            <div class="nk-divider divider md"></div>
-
-                            <!-- invoice subtotal -->
-                          </div>
+                              <div class="nk-divider divider md"></div>
+                            </div>   
+                          </div>                        
+                          </div>                         
                         </div>
                       </div>
                       <!-- Status  -->
