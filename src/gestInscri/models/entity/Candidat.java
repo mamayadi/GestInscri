@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,7 +41,16 @@ public class Candidat implements Serializable {
 	@Column(name = "inscrit", nullable = true)
 	private boolean inscrit = false;
 	@ManyToOne(cascade=CascadeType.ALL, optional = true)
+	@JoinTable(name="enseignant_candidat")
 	private Enseignant enseignant;
+
+	public Enseignant getEnseignant() {
+		return enseignant;
+	}
+
+	public void setEnseignant(Enseignant enseignant) {
+		this.enseignant = enseignant;
+	}
 
 	public Candidat(String nom, String prenom, String mail, String password) {
 		this.user = new User(nom, prenom, mail, password, Roles.Candidat);

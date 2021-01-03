@@ -34,6 +34,8 @@ public class logoutController extends HttpServlet {
 		request.removeAttribute("candidatList");
 		request.removeAttribute("adminList");
 		request.removeAttribute("enseignantList");
+		// Candidat detail
+		request.removeAttribute("foundedCandidat");
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}
 

@@ -69,7 +69,7 @@ public class EnseignantDao {
 		return null;
 	}
 
-	public Enseignant getEnseignantById(int id) {
+	public synchronized Enseignant getEnseignantById(int id) {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Enseignant enseignant = (Enseignant) session.get(Enseignant.class, id);
@@ -83,13 +83,14 @@ public class EnseignantDao {
 		return null;
 	}
 
-	public Enseignant updateEnseignant(Enseignant enseignant) {
+	public synchronized Enseignant updateEnseignant(Enseignant enseignant) {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			session.update(enseignant);
+			Enseignant sm = (Enseignant) session.merge(enseignant);
+			session.update(sm);
 			transaction.commit();
-			return enseignant;
+			return sm;
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();
@@ -112,4 +113,5 @@ public class EnseignantDao {
 		}
 		return null;
 	}
+	
 }

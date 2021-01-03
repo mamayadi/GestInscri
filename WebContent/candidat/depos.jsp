@@ -210,7 +210,6 @@ pageEncoding="ISO-8859-1"%>
                                     <div class="custom-file">
                                       <input
                                         type="file"
-                                        multiple
                                         class="custom-file-input"
                                         id="diplome"
                                         name="diplome"
@@ -232,7 +231,6 @@ pageEncoding="ISO-8859-1"%>
                                     <div class="custom-file">
                                       <input
                                         type="file"
-                                        multiple
                                         class="custom-file-input"
                                         id="attestationreussite"
                                         name="attestationreussite"
@@ -253,7 +251,6 @@ pageEncoding="ISO-8859-1"%>
                                     <div class="custom-file">
                                       <input
                                         type="file"
-                                        multiple
                                         class="custom-file-input"
                                         id="noteBac"
                                         name="noteBac"
@@ -278,7 +275,6 @@ pageEncoding="ISO-8859-1"%>
                                     <div class="custom-file">
                                       <input
                                         type="file"
-                                        multiple
                                         class="custom-file-input"
                                         id="premiereAnnee"
                                         name="premiereAnnee"
@@ -301,7 +297,6 @@ pageEncoding="ISO-8859-1"%>
                                     <div class="custom-file">
                                       <input
                                         type="file"
-                                        multiple
                                         class="custom-file-input"
                                         id="deuxiemeAnnee"
                                         name="deuxiemeAnnee"
@@ -323,7 +318,6 @@ pageEncoding="ISO-8859-1"%>
                                     <div class="custom-file">
                                       <input
                                         type="file"
-                                        multiple
                                         class="custom-file-input"
                                         id="troisiemeAnnee"
                                         name="troisiemeAnnee"
@@ -360,7 +354,6 @@ pageEncoding="ISO-8859-1"%>
                                     </div>
                                   </div>
                                 </div>
-
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label class="form-label" for="lettreRecommandation"

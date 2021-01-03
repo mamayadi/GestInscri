@@ -142,6 +142,8 @@ public class deposController extends HttpServlet {
 		candidat.setStatus(CandidatStatus.EN_COURS);
 		Candidat updatedCandidat = candidatDao.updateCandidat(candidat);
 		if (updatedCandidat != null) {
+			updatedCandidat.getDocumentsPedagogiques().zipFiles(updatedCandidat,updatedCandidat.getDocumentsPedagogiques().getRapportStage(), request, "Rapport de Stage(s).zip");
+			updatedCandidat.getDocumentsPedagogiques().zipFiles(updatedCandidat,updatedCandidat.getDocumentsPedagogiques().getLettreRecommandation(), request, "Lettre de Recommandation(s).zip");
 			response.sendRedirect(request.getContextPath() + "/candidat/details.jsp");
 		}
 	}
