@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="gestInscri.models.entity.*"%>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 <head>
@@ -256,10 +257,12 @@
 																		id="uid1"> <label class="custom-control-label"
 																		for="uid1"></label>
 																</div>
-															</div>
+															</div>															
 															<div class="nk-tb-col">
-																<span class="tb-lead"><a href="<%=request.getContextPath()%>/admin/folderDetails.jsp">#${candidat.getId()
-																		}</a></span>
+																<span class="tb-lead">
+																	<a href="<%=request.getContextPath()%>/admin/folderDetails.jsp?id=${candidat.getId()}">																
+																	#000${candidat.getId()}
+																</a></span>
 															</div>
 															<div class="nk-tb-col tb-col-md">
 																<span class="tb-sub">${candidat.getUser().getFullName() }</span>
@@ -269,12 +272,12 @@
 																<span class="tb-sub">${candidat.getUser().getMail() }</span>
 															</div>
 															<div class="nk-tb-col tb-col-md">
-																<span class="tb-sub text-primary">01-01-2020</span>
+																<span class="tb-sub text-primary">01-01-2021</span>
 															</div>
 															<div class="nk-tb-col">
 																<c:choose>
 																	<c:when test="${candidat.getStatus() !=null}">
-																		<span class="badge badge-success">${candidat.getStatus()}</span>
+																		<span class="badge badge-warning">${candidat.getStatus()}</span>
 																	</c:when>
 																	<c:otherwise>
 																		<span class="badge badge-gray">-</span>

@@ -34,7 +34,7 @@ public class Enseignant implements Serializable {
 	private int telephone;
 	@Column(name = "departement")
 	private String departement;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy="enseignant")
 	private List<Candidat> listDossier;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private User user;

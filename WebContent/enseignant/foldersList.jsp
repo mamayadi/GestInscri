@@ -1,3 +1,11 @@
+
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="gestInscri.models.entity.*"%>
+<%@page import="gestInscri.enums.CandidatStatus"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -27,7 +35,8 @@
 			<!-- wrap @s -->
 			<div class="nk-wrap ">
 				<!-- main header @s -->
-				<%@ include file="/include/header.jsp"%>
+			
+	<%@ include file="/include/header.jsp"%>
 				<!-- main header @e -->
 				<!-- content @s -->
 				<div class="nk-content ">
@@ -220,17 +229,17 @@
 															</div>
 														</div>
 														<div class="nk-tb-col">
-															<span>#Id</span>
+															<span>#ID</span>
 														</div>
 														<div class="nk-tb-col tb-col-md">
-															<span>Nom & Prénom</span>
+															<span>Nom & Prï¿½nom</span>
 														</div>
 
 														<div class="nk-tb-col tb-col-sm">
 															<span>E-mail</span>
 														</div>
 														<div class="nk-tb-col tb-col-md">
-															<span>Date dépos</span>
+															<span>Date dï¿½pos</span>
 														</div>
 														<div class="nk-tb-col tb-col-sm">
 															<span>Status</span>
@@ -244,6 +253,8 @@
 														</div>
 													</div>
 													<!-- .nk-tb-item -->
+													<c:forEach var="candidat" items="${connectedEnseignant.getListDossier()}"
+														varStatus="index">
 													<div class="nk-tb-item">
 														<div class="nk-tb-col nk-tb-col-check">
 															<div
@@ -254,22 +265,28 @@
 															</div>
 														</div>
 														<div class="nk-tb-col">
-															<span class="tb-lead"><a href="#">#3001</a></span>
+															<span class="tb-lead"><a href="<%=request.getContextPath()%>/enseignant/folderDetails.jsp?id=${candidat.getId()}">
+																#000${candidat.getId()}</a></span>
 														</div>
 														<div class="nk-tb-col tb-col-md">
-															<span class="tb-sub">Foulen Ben foulen</span>
+															<span class="tb-sub">${candidat.getUser().getFullName() }</span>
 														</div>
 
 														<div class="nk-tb-col tb-col-sm">
-															<span class="tb-sub">foulen.foulen@gmail.com</span>
+															<span class="tb-sub">${candidat.getUser().getMail() }</span>
 														</div>
 														<div class="nk-tb-col tb-col-md">
-															<span class="tb-sub text-primary">01-01-2020</span>
+															<span class="tb-sub text-primary">01-01-2021</span>
 														</div>
 														<div class="nk-tb-col">
-															<span class="dot bg-warning d-mb-none"></span> <span
-																class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex">On
-																Hold</span>
+															<c:choose>
+																	<c:when test="${candidat.getStatus() !=null}">
+																		<span class="badge badge-warning">${candidat.getStatus()}</span>
+																	</c:when>
+																	<c:otherwise>
+																		<span class="badge badge-gray">-</span>
+																	</c:otherwise>
+																</c:choose>
 														</div>
 														<div class="nk-tb-col nk-tb-col-tools">
 															<ul class="nk-tb-actions gx-1">
@@ -296,6 +313,7 @@
 															</ul>
 														</div>
 													</div>
+													</c:forEach>
 													<!-- .nk-tb-item -->
 													<!-- .nk-tb-item -->
 												</div>

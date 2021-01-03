@@ -85,9 +85,10 @@ public class CandidatDao {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			session.update(candidat);
+			Candidat sm = (Candidat) session.merge(candidat);
+			session.update(sm);
 			transaction.commit();
-			return candidat;
+			return sm;
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();
