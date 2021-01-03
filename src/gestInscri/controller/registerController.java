@@ -52,14 +52,15 @@ public class registerController extends HttpServlet {
 			Candidat registredCandidat = candidatDao.createCandidat(new Candidat(nom, prenom, mail, password));
 			if (registredCandidat != null) {
 				request.getSession().setAttribute("connectedUser", registredCandidat.getUser());
+				request.getSession().setAttribute("connectedCandidat", registredCandidat);
 				ServletContext application = getServletContext();
 				response.sendRedirect(request.getContextPath() + "/candidat/depos.jsp");
 			} else {
-				request.setAttribute("error", "Probleme lors de crÃ©ation du compte!");
+				request.setAttribute("error", "Probleme lors de création du compte!");
 				getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 			}
 		} else {
-			request.setAttribute("error", "DonnÃ©es invalid!");
+			request.setAttribute("error", "Données invalid!");
 			getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 		}
 
