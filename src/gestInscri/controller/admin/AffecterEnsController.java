@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import gestInscri.models.entity.Candidat;
 import gestInscri.models.entity.Enseignant;
 import gestInscri.models.dao.EnseignantDao;
+import gestInscri.enums.CandidatStatus;
 import gestInscri.models.dao.CandidatDao;
 
 /**
@@ -64,6 +65,7 @@ public class AffecterEnsController extends HttpServlet {
 			
 			// enseignant.setListDossier(dossierList);
 			candidat.setEnseignant(enseignant); 
+			candidat.setStatus(CandidatStatus.EN_COURS);
 			Candidat updatedCandidat = candidatDao.updateCandidat(candidat);
 			// Enseignant updatedEnseignant = enseignantDao.updateEnseignant(enseignant);
 			

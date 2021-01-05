@@ -1,9 +1,9 @@
 <%@page import="java.util.List"%>
-<%@page import="gestInscri.models.entity.Candidat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="gestInscri.models.entity.*"%>
+<%@page import="gestInscri.enums.CandidatStatus"%>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 <head>
@@ -276,8 +276,20 @@
 															</div>
 															<div class="nk-tb-col">
 																<c:choose>
-																	<c:when test="${candidat.getStatus() !=null}">
-																		<span class="badge badge-warning">${candidat.getStatus()}</span>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.EN_ATTENTE}">
+																		<span class="badge badge-warning">En Attente</span>
+																	</c:when>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.EN_COURS}">
+																		<span class="badge badge-info">En Cours</span>
+																	</c:when>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.ADMIS}">
+																		<span class="badge badge-success">Admis</span>
+																	</c:when>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.NON_ADMIS}">
+																		<span class="badge badge-secondary">Non Admis</span>
+																	</c:when>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.REFUS}">
+																		<span class="badge badge-danger">Refus</span>
 																	</c:when>
 																	<c:otherwise>
 																		<span class="badge badge-gray">-</span>

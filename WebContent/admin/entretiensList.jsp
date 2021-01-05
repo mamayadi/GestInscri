@@ -12,7 +12,7 @@
 <!-- Fav Icon  -->
 <link rel="shortcut icon" href="./images/favicon.png">
 <!-- Page Title  -->
-<title>Teachers list | IPSAS Admin</title>
+<title>Entretiens list | IPSAS Admin</title>
 <!-- StyleSheets  -->
 <%@ include file="/include/css.jsp"%>
 </head>
@@ -38,9 +38,9 @@
 									<div class="nk-block-between">
 										<div class="nk-block-head-content">
 											<h3 class="nk-block-title page-title">Liste des
-												Enseignants</h3>
+												Entretiens</h3>
 											<div class="nk-block-des text-soft">
-												<p>Vous avez un total de xx Enseignants.</p>
+												<p>Vous avez un total de xx Entretiens.</p>
 											</div>
 										</div>
 										<!-- .nk-block-head-content -->
@@ -76,11 +76,6 @@
 																</div>
 															</div>
 														</li>
-														<li class="nk-block-tools-opt"><a href="#"
-															class="btn btn-icon btn-primary d-md-none"><em
-																class="icon ni ni-plus"></em></a> <a href="#"
-															class="btn btn-primary d-none d-md-inline-flex"><em
-																class="icon ni ni-plus"></em><span>Ajouter</span></a></li>
 													</ul>
 												</div>
 											</div>
@@ -104,11 +99,17 @@
 											<div class="nk-tb-col">
 												<span class="sub-text">Profil Enseignant</span>
 											</div>
+											<div class="nk-tb-col">
+												<span class="sub-text">Profil Candidat</span>
+											</div>
 											<div class="nk-tb-col tb-col-md">
-												<span class="sub-text">Téléphone</span>
+												<span class="sub-text">Date d'Entretien</span>
 											</div>
 											<div class="nk-tb-col tb-col-lg">
-												<span class="sub-text">Département</span>
+												<span class="sub-text">Heure d'Entretien</span>
+											</div>
+											<div class="nk-tb-col tb-col-lg">
+												<span class="sub-text">Status d'Entretien</span>
 											</div>
 											<div class="nk-tb-col nk-tb-col-tools">
 												<ul class="nk-tb-actions gx-1 my-n1">
@@ -139,37 +140,43 @@
 													</div>
 												</a>
 											</div>
+											<div class="nk-tb-col">
+												<a href="#">
+													<div class="user-card">
+														<div class="user-avatar bg-primary">
+															<span>AJ</span>
+														</div>
+														<div class="user-info">
+															<span class="tb-lead">Skander Hkacem<span
+																class="dot dot-success d-md-none ml-1"></span></span> <span>skanderhk@gmail.com</span>
+														</div>
+													</div>
+												</a>
+											</div>
 
 											<div class="nk-tb-col tb-col-md">
-												<span>+216 25-xxx-xxx</span>
+												<span>22/01/2021</span>
 											</div>
 											<div class="nk-tb-col tb-col-lg">
-												<span>Informatique</span>
+												<span>12:30</span>
+											</div>
+											<div class="nk-tb-col tb-col-lg">
+												<span class="badge badge-warning">En Attente</span>
 											</div>
 
 											<div class="nk-tb-col nk-tb-col-tools">
 												<ul class="nk-tb-actions gx-1">
 													<li class="nk-tb-action-hidden"><a href="#"
-														class="btn btn-trigger btn-icon" data-toggle="tooltip"
-														data-placement="top" title="Send Email"> <em
-															class="icon ni ni-mail-fill"></em>
+														class="btn btn-success btn-icon" data-toggle="tooltip"
+														data-placement="top" title="Accepter"> <em
+															class="icon ni ni-check-round-fill"></em>
 													</a></li>
 													<li class="nk-tb-action-hidden"></li>
-													<li>
-														<div class="drodown">
-															<a href="#"
-																class="dropdown-toggle btn btn-icon btn-trigger"
-																data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-															<div class="dropdown-menu dropdown-menu-right">
-																<ul class="link-list-opt no-bdr">
-																	<li><a href="#"><em
-																			class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
-																	<li><a href="#"><em class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
-
-																</ul>
-															</div>
-														</div>
-													</li>
+													<li class="nk-tb-action-hidden"><a href="#"
+														class="btn btn-danger btn-icon" data-toggle="tooltip"
+														data-placement="top" title="Refuser"> <em
+															class="icon ni ni-cross-round-fill"></em>
+													</a></li>
 												</ul>
 											</div>
 										</div>

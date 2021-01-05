@@ -59,7 +59,7 @@ public class Entretien {
 	}
 
 	public void setDateEntretien(Date dateEntretien) {
-		this.dateEntretien = dateEntretien;
+		this.dateEntretien = dateEntretien;		
 	}
 
 }

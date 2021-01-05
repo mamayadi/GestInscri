@@ -76,16 +76,19 @@ public String getFileName(String path){
                             <li>
                               Status du Dossier:
                               <c:if test="${connectedCandidat.getStatus() == CandidatStatus.EN_COURS}">
-   								<span class="text-warning"> En cours d'evaluation </span>
+   								<span class="text-info"> En Cours d'evaluation </span>
 							  </c:if>
 							  <c:if test="${connectedCandidat.getStatus() == CandidatStatus.ADMIS}">
    								<span class="text-success"> Admis </span>
 							  </c:if>
 							  <c:if test="${connectedCandidat.getStatus() == CandidatStatus.NON_ADMIS}">
-   								<span class="text-danger"> Non admis </span>
+   								<span class="text-secondary"> Non Admis </span>
 							  </c:if>
 							  <c:if test="${connectedCandidat.getStatus() == CandidatStatus.REFUS}">
-   								<span class="text-danger"> Refuser </span>
+   								<span class="text-danger"> Refusé </span>
+							  </c:if>
+							  <c:if test="${connectedCandidat.getStatus() == CandidatStatus.EN_ATTENTE}">
+   								<span class="text-warning"> En attente d'affectation </span>
 							  </c:if>
                             </li>
                           </ul>

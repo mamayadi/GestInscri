@@ -139,7 +139,6 @@ public class deposController extends HttpServlet {
 
 		candidat.setDocumentsPedagogiques(docs);
 		candidat.setInscrit(false);
-		candidat.setStatus(CandidatStatus.EN_COURS);
 		Candidat updatedCandidat = candidatDao.updateCandidat(candidat);
 		if (updatedCandidat != null) {
 			updatedCandidat.getDocumentsPedagogiques().zipFiles(updatedCandidat,updatedCandidat.getDocumentsPedagogiques().getRapportStage(), request, "Rapport de Stage(s).zip");
