@@ -116,7 +116,7 @@
 															<div class="col-8 mt-1">
 																<h6 class="invoice-to">
 																	Documents du dossier<span>#000<%=foundedCandidat.getId()%></span>
-																</h6>#
+																</h6>
 																<div class="row">
 																	<div class="col-6">
 																		<div class="mb-1">
@@ -189,7 +189,8 @@
 													<div
 														class="invoice-product-details table-responsive mx-md-25">
 														<div class="card-body pb-0 mx-25">
-															<form action="AffecterEnsController" method="POST">
+															<form action="AffecterEnsController" method="POST"
+																id="AffecterEnsForm">
 																<div
 																	class="d-flex align-items-center justify-content-center">
 																	<span>Affect&eacute; ce dossier &aacute;</span>
@@ -201,14 +202,23 @@
 																					name="selectedEnseignant">
 																					<c:forEach var="enseignant"
 																						items="${enseignantList}" varStatus="index">
-																						<option value="${enseignant.getId()}">${enseignant.getUser().getFullName()}</option>
+
+																						<c:choose>
+																							<c:when test="${foundedCandidat.getEnseignant().getId() == enseignant.getId()}">
+																							<option value="${enseignant.getId()}" selected>${enseignant.getUser().getFullName()}</option>
+																							</c:when>
+																							<c:otherwise>
+																							<option value="${enseignant.getId()}">${enseignant.getUser().getFullName()}</option>
+																							</c:otherwise>
+																						</c:choose>
 																					</c:forEach>
+
 																				</select>
 																			</div>
 																		</div>
 																	</div>
-																	<button class="btn btn-secondary" type="submit">
-																		Affecter</button>
+																	<button class="btn btn-secondary eg-swal-confirm"
+																		type="submit">Affecter</button>
 																</div>
 															</form>
 															<div class="nk-divider divider md"></div>
@@ -227,8 +237,13 @@
 																de dossier</span>
 															<c:if
 																test="${foundedCandidat.getStatus() == CandidatStatus.EN_COURS}">
-																<h5 class="text-warning d-flex justify-content-center">
+																<h5 class="text-info d-flex justify-content-center">
 																	En cours d'evaluation</h5>
+															</c:if>
+															<c:if
+																test="${foundedCandidat.getStatus() == CandidatStatus.EN_ATTENTE}">
+																<h5 class="text-warning d-flex justify-content-center">
+																	En attente d'affectation</h5>
 															</c:if>
 															<c:if
 																test="${foundedCandidat.getStatus() == CandidatStatus.ADMIS}">

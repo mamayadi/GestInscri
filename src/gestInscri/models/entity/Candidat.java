@@ -54,6 +54,7 @@ public class Candidat implements Serializable {
 
 	public Candidat(String nom, String prenom, String mail, String password) {
 		this.user = new User(nom, prenom, mail, password, Roles.Candidat);
+		this.status = CandidatStatus.EN_ATTENTE;
 	}
 
 	public void setUser(User user) {

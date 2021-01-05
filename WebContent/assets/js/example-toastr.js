@@ -95,4 +95,9 @@
         toastr.clear();
         NioApp.Toast('<h5>Update Successfully</h5><p>Your profile has been successfully updated.</p>', 'success');
     });
+    $('.eg-toastr-admis').on("click", function(e){
+        e.preventDefault();
+        toastr.clear();
+        NioApp.Toast('Ce Candidat est marqué Admis.', 'success',{position: 'top-right'});
+    });
 })(NioApp, jQuery);

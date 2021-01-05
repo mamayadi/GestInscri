@@ -280,8 +280,20 @@
 														</div>
 														<div class="nk-tb-col">
 															<c:choose>
-																	<c:when test="${candidat.getStatus() !=null}">
-																		<span class="badge badge-warning">${candidat.getStatus()}</span>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.EN_ATTENTE}">
+																		<span class="badge badge-warning">En Attente</span>
+																	</c:when>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.EN_COURS}">
+																		<span class="badge badge-info">En Cours</span>
+																	</c:when>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.ADMIS}">
+																		<span class="badge badge-success">Admis</span>
+																	</c:when>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.NON_ADMIS}">
+																		<span class="badge badge-secondary">Non Admis</span>
+																	</c:when>
+																	<c:when test="${candidat.getStatus() == CandidatStatus.REFUS}">
+																		<span class="badge badge-danger">Refus</span>
 																	</c:when>
 																	<c:otherwise>
 																		<span class="badge badge-gray">-</span>
@@ -291,9 +303,9 @@
 														<div class="nk-tb-col nk-tb-col-tools">
 															<ul class="nk-tb-actions gx-1">
 																
-																<li class="nk-tb-action-hidden"><a href="#"
+																<li class="nk-tb-action-hidden"><a href="<%=request.getContextPath()%>/enseignant/folderDetails.jsp?id=${candidat.getId()}"
 																	class="btn btn-icon btn-trigger btn-tooltip"
-																	title="Consulter le dossier" data-toggle="dropdown"> <em
+																	title="Consulter le dossier" > <em
 																		class="icon ni ni-eye"></em></a></li>
 																<li>
 																	<div class="drodown mr-n1">
@@ -303,8 +315,7 @@
 																			class="icon ni ni-more-h"></em></a>
 																		<div class="dropdown-menu dropdown-menu-right">
 																			<ul class="link-list-opt no-bdr">
-																				<li><a href="#"><em class="icon ni ni-user-add"></em><span>Affecter un enseignant</span></a></li>
-																				<li><a href="#"><em class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
+																				<li><a href="<%=request.getContextPath()%>/enseignant/folderDetails.jsp?id=${candidat.getId()}"><em class="icon ni ni-opt-dot-alt"></em><span>Modifier</span></a></li>
 																				<li><a href="#"><em class="icon ni ni-trash"></em><span>Supprimer</span></a></li>
 																			</ul>
 																		</div>

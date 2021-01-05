@@ -129,17 +129,79 @@
       icon: "info",
       showCancelButton: true,
       confirmButtonText: "Oui, Accepter!",
-    }).then((result) => {
+    }).then(function(result){
       if (result.value) {
         Swal.fire(
           "Confirm&eacute; !",
           "Ce candidat a &eacute;te accept&eacute;.",
           "success"
         );
+        document.getElementById("AffecterEnsForm").submit();
       }
+      
     });
     e.preventDefault();
   });
+  $(".eg-swal-confirm-admis").on("click", function (e) {
+	    Swal.fire({
+	      title: "Vous &ecirc;tes sure ?",
+	      text: "You won't be able to revert this!",
+	      icon: "info",
+	      showCancelButton: true,
+	      confirmButtonText: "Oui, Accepter!",
+	    }).then(function(result){
+	      if (result.value) {
+	        Swal.fire(
+	          "Confirm&eacute; !",
+	          "Ce candidat a &eacute;te accept&eacute;.",
+	          "success"
+	        );
+	        document.getElementById("admisForm").submit();
+	        
+	      }
+	      
+	    });
+	    e.preventDefault();
+	  });
+  $(".eg-swal-confirm-refus").on("click", function (e) {
+	    Swal.fire({
+	      title: "Vous &ecirc;tes sure ?",
+	      text: "You won't be able to revert this!",
+	      icon: "info",
+	      showCancelButton: true,
+	      confirmButtonText: "Oui, Accepter!",
+	    }).then(function(result){
+	      if (result.value) {
+	        Swal.fire(
+	          "Confirm&eacute; !",
+	          "Ce candidat a &eacute;te accept&eacute;.",
+	          "success"
+	        );
+	        document.getElementById("refusForm").submit();
+	      }
+	    });
+	    e.preventDefault();
+	  });
+  $(".eg-swal-confirm-entretien").on("click", function (e) {
+	    Swal.fire({
+	      title: "Vous &ecirc;tes sure ?",
+	      text: "You won't be able to revert this!",
+	      icon: "info",
+	      showCancelButton: true,
+	      confirmButtonText: "Oui, Accepter!",
+	    }).then(function(result){
+	      if (result.value) {
+	        Swal.fire(
+	          "Confirm&eacute; !",
+	          "Ce candidat a &eacute;te accept&eacute;.",
+	          "success"
+	        );
+	        document.getElementById("entretienForm").submit();
+	      }
+	      
+	    });
+	    e.preventDefault();
+	  });
   
   
 })(NioApp, jQuery);
