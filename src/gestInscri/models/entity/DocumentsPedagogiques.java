@@ -50,9 +50,9 @@ public class DocumentsPedagogiques implements Serializable {
 	@Column(name = "troisiemeAnnee", nullable = true)
 	private String troisiemeAnnee;
 	@ElementCollection
-	private List<String> rapportStage = new ArrayList();
+	private List<String> rapportStage = new ArrayList<String>();
 	@ElementCollection
-	private List<String> lettreRecommandation = new ArrayList();
+	private List<String> lettreRecommandation = new ArrayList<String>();
 	@OneToOne(mappedBy = "documentsPedagogiques")
 	private Candidat candidat;
 
@@ -174,10 +174,8 @@ public class DocumentsPedagogiques implements Serializable {
 			System.out.println("Done... Zipped the files...");
 			// }
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {

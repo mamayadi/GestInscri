@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,9 +41,11 @@ public class Candidat implements Serializable {
 	private CandidatStatus status;
 	@Column(name = "inscrit", nullable = true)
 	private boolean inscrit = false;
-	@ManyToOne(cascade=CascadeType.ALL, optional = true)
+	@ManyToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY, optional = true)
 	@JoinTable(name="enseignant_candidat")
 	private Enseignant enseignant;
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = true, mappedBy = "candidat")
+	private Entretien entretien;
 
 	public Enseignant getEnseignant() {
 		return enseignant;
@@ -102,5 +105,13 @@ public class Candidat implements Serializable {
 
 	public User getUser() {
 		return user;
+	}
+
+	public Entretien getEntretien() {
+		return entretien;
+	}
+
+	public void setEntretien(Entretien entretien) {
+		this.entretien = entretien;
 	}
 }

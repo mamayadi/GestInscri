@@ -228,14 +228,14 @@
 															<span>#Id</span>
 														</div>
 														<div class="nk-tb-col tb-col-md">
-															<span>Nom & Prï¿½nom</span>
+															<span>Nom & Prénom</span>
 														</div>
 
 														<div class="nk-tb-col tb-col-sm">
 															<span>E-mail</span>
 														</div>
 														<div class="nk-tb-col tb-col-md">
-															<span>Date dï¿½pos</span>
+															<span>Date dépos</span>
 														</div>
 														<div class="nk-tb-col tb-col-sm">
 															<span>Status</span>
@@ -301,9 +301,9 @@
 															</div>
 															<div class="nk-tb-col nk-tb-col-tools">
 																<ul class="nk-tb-actions gx-1">
-																	<li class=""><a href="#"
+																	<li class=""><a href="<%=request.getContextPath()%>/admin/folderDetails.jsp?id=${candidat.getId()}"
 																		class="btn btn-icon btn-trigger btn-tooltip"
-																		title="Consulter le dossier" data-toggle="dropdown">
+																		title="Consulter le dossier">
 																			<em class="icon ni ni-eye"></em>
 																	</a></li>
 																	<li>

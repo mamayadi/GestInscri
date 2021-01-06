@@ -1,3 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="gestInscri.models.entity.*"%>
+<%@page import="gestInscri.enums.CandidatStatus"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -40,7 +46,7 @@
 											<h3 class="nk-block-title page-title">Liste des
 												Entretiens</h3>
 											<div class="nk-block-des text-soft">
-												<p>Vous avez un total de xx Entretiens.</p>
+												<p>Vous avez un total de ${entretienList.size() } entretiens.</p>
 											</div>
 										</div>
 										<!-- .nk-block-head-content -->
@@ -96,7 +102,7 @@
 														for="uid"></label>
 												</div>
 											</div>
-											
+
 											<div class="nk-tb-col">
 												<span class="sub-text">Profil Candidat</span>
 											</div>
@@ -116,56 +122,80 @@
 											</div>
 										</div>
 										<!-- .nk-tb-item -->
-										<div class="nk-tb-item">
-											<div class="nk-tb-col nk-tb-col-check">
-												<div
-													class="custom-control custom-control-sm custom-checkbox notext">
-													<input type="checkbox" class="custom-control-input"
-														id="uid1"> <label class="custom-control-label"
-														for="uid1"></label>
+										<c:forEach var="entretien" items="${entretienList}"
+											varStatus="index">
+											<div class="nk-tb-item">
+												<div class="nk-tb-col nk-tb-col-check">
+													<div
+														class="custom-control custom-control-sm custom-checkbox notext">
+														<input type="checkbox" class="custom-control-input"
+															id="uid1"> <label class="custom-control-label"
+															for="uid1"></label>
+													</div>
+												</div>
+												<div class="nk-tb-col">
+													<a href="#">
+														<div class="user-card">
+															<div class="user-avatar bg-primary">
+																<span>${entretien.getCandidat().getUser().getProfilImageText() }</span>
+															</div>
+															<div class="user-info">
+																<span class="tb-lead">${entretien.getCandidat().getUser().getFullName() }<span
+																	class="dot dot-success d-md-none ml-1"></span></span> <span>${entretien.getCandidat().getUser().getMail() }</span>
+															</div>
+														</div>
+													</a>
+												</div>
+												<div class="nk-tb-col tb-col-md">
+													<span>${entretien.getEntretienDate() }</span>
+												</div>
+												<div class="nk-tb-col tb-col-lg">
+													<span>${entretien.getEntretienTime() }</span>
+												</div>
+												<div class="nk-tb-col tb-col-lg">
+													<c:choose>
+														<c:when
+															test="${entretien.getCandidat().getStatus() == CandidatStatus.EN_ATTENTE}">
+															<span class="badge badge-warning">En attente</span>
+														</c:when>
+														<c:when
+															test="${entretien.getCandidat().getStatus() == CandidatStatus.EN_COURS}">
+															<span class="badge badge-info">En cours</span>
+														</c:when>
+														<c:when
+															test="${entretien.getCandidat().getStatus() == CandidatStatus.ADMIS}">
+															<span class="badge badge-success">Admis</span>
+														</c:when>
+														<c:when
+															test="${entretien.getCandidat().getStatus() == CandidatStatus.NON_ADMIS}">
+															<span class="badge badge-secondary">Non admis</span>
+														</c:when>
+														<c:when
+															test="${entretien.getCandidat().getStatus() == CandidatStatus.REFUS}">
+															<span class="badge badge-danger">Refus</span>
+														</c:when>
+														<c:otherwise>
+															<span class="badge badge-gray">-</span>
+														</c:otherwise>
+													</c:choose>
+												</div>
+												<div class="nk-tb-col nk-tb-col-tools">
+													<ul class="nk-tb-actions gx-1">
+														<li class="nk-tb-action-hidden"><a href="#"
+															class="btn btn-success btn-icon" data-toggle="tooltip"
+															data-placement="top" title="Accepter"> <em
+																class="icon ni ni-check-round-fill"></em>
+														</a></li>
+														<li class="nk-tb-action-hidden"></li>
+														<li class="nk-tb-action-hidden"><a href="#"
+															class="btn btn-danger btn-icon" data-toggle="tooltip"
+															data-placement="top" title="Refuser"> <em
+																class="icon ni ni-cross-round-fill"></em>
+														</a></li>
+													</ul>
 												</div>
 											</div>
-											
-											<div class="nk-tb-col">
-												<a href="#">
-													<div class="user-card">
-														<div class="user-avatar bg-primary">
-															<span>AJ</span>
-														</div>
-														<div class="user-info">
-															<span class="tb-lead">Skander Hkacem<span
-																class="dot dot-success d-md-none ml-1"></span></span> <span>skanderhk@gmail.com</span>
-														</div>
-													</div>
-												</a>
-											</div>
-
-											<div class="nk-tb-col tb-col-md">
-												<span>22/01/2021</span>
-											</div>
-											<div class="nk-tb-col tb-col-lg">
-												<span>12:30</span>
-											</div>
-											<div class="nk-tb-col tb-col-lg">
-												<span class="badge badge-warning">En Attente</span>
-											</div>
-
-											<div class="nk-tb-col nk-tb-col-tools">
-												<ul class="nk-tb-actions gx-1">
-													<li class="nk-tb-action-hidden"><a href="#"
-														class="btn btn-success btn-icon" data-toggle="tooltip"
-														data-placement="top" title="Accepter"> <em
-															class="icon ni ni-check-round-fill"></em>
-													</a></li>
-													<li class="nk-tb-action-hidden"></li>
-													<li class="nk-tb-action-hidden"><a href="#"
-														class="btn btn-danger btn-icon" data-toggle="tooltip"
-														data-placement="top" title="Refuser"> <em
-															class="icon ni ni-cross-round-fill"></em>
-													</a></li>
-												</ul>
-											</div>
-										</div>
+										</c:forEach>
 										<!-- .nk-tb-item -->
 									</div>
 									<!-- .nk-tb-list -->

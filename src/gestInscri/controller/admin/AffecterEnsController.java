@@ -60,18 +60,17 @@ public class AffecterEnsController extends HttpServlet {
 			if (enseignant.getListDossier() != null) {
 				dossierList = enseignant.getListDossier();
 			}
-			
 			dossierList.add(candidat);
-			
 			// enseignant.setListDossier(dossierList);
-			candidat.setEnseignant(enseignant); 
+			candidat.setEnseignant(enseignant);
 			candidat.setStatus(CandidatStatus.EN_COURS);
 			Candidat updatedCandidat = candidatDao.updateCandidat(candidat);
-			// Enseignant updatedEnseignant = enseignantDao.updateEnseignant(enseignant);
-			
-			if ( updatedCandidat != null)
+
+			if (updatedCandidat != null){
 				getServletContext().getRequestDispatcher("/admin/folderDetails.jsp?id=" + enseignantId).forward(request,
-						response); 
+						response);
+			}
+				
 		}
 	}
 

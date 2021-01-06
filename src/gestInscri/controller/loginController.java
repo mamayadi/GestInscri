@@ -16,10 +16,12 @@ import gestInscri.enums.Roles;
 import gestInscri.models.dao.AdminDao;
 import gestInscri.models.dao.CandidatDao;
 import gestInscri.models.dao.EnseignantDao;
+import gestInscri.models.dao.EntretienDao;
 import gestInscri.models.dao.UserDao;
 import gestInscri.models.entity.Admin;
 import gestInscri.models.entity.Candidat;
 import gestInscri.models.entity.Enseignant;
+import gestInscri.models.entity.Entretien;
 import gestInscri.models.entity.User;
 
 /**
@@ -110,6 +112,10 @@ public class loginController extends HttpServlet {
 		Enseignant enseignant = enseignantDao.getEnseignantByUser(user);
 		if(enseignant != null){
 			request.getSession().setAttribute("connectedEnseignant", enseignant);
+			List<Entretien> entretienList = enseignant.getEntretienList();
+			if(entretienList != null){
+				request.getSession().setAttribute("entretienList", entretienList);
+			}
 		}
 	}
 	

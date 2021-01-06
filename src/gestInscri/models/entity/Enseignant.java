@@ -1,6 +1,7 @@
 package gestInscri.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,6 +39,8 @@ public class Enseignant implements Serializable {
 	private List<Candidat> listDossier;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private User user;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "enseignant" )
+	private List<Entretien> entretienList;
 
 	public Enseignant(String nom, String prenom, String mail, String password, int telephone, String departement) {
 		this.user = new User(nom, prenom, mail, password, Roles.Enseignant);
@@ -83,4 +86,21 @@ public class Enseignant implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public List<Entretien> getEntretienList() {
+		return entretienList;
+	}
+
+	public void addEntretien(Entretien entretien) {
+		if(this.entretienList == null){
+			this.entretienList = new ArrayList<Entretien>();
+		}
+		this.entretienList.add(entretien);
+	}
+
+	public void setEntretienList(List<Entretien> entretienList) {
+		this.entretienList = entretienList;
+	}
+
+	
 }

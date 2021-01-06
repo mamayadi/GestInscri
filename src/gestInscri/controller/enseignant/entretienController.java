@@ -1,12 +1,13 @@
 package gestInscri.controller.enseignant;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;  
+import java.text.SimpleDateFormat;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import gestInscri.enums.CandidatStatus;
+import gestInscri.models.dao.CandidatDao;
+import gestInscri.models.dao.EnseignantDao;
 import gestInscri.models.dao.EntretienDao;
 import gestInscri.models.entity.Candidat;
 import gestInscri.models.entity.Enseignant;
@@ -25,42 +29,58 @@ import gestInscri.models.entity.Entretien;
 @WebServlet("/entretienController")
 public class entretienController extends HttpServlet {
 	EntretienDao entretienDao = new EntretienDao();
+	CandidatDao candidatDao = new CandidatDao();
+	EnseignantDao enseignantDao = new EnseignantDao();
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public entretienController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public entretienController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String date = request.getParameter("date-ent");
-		String time = request.getParameter("time-ent");
-		String dateandtime = date + " " + time;
-		Candidat candidat = (Candidat) request.getSession().getAttribute("foundedCandidat");
-		Enseignant enseignant = (Enseignant) request.getSession().getAttribute("connectedEnseignant");
-		SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd HH:mm");  
-		
-		System.out.println(dateandtime);
-		
-		Date dateEntretien = new Date();
-		Entretien entretien = new Entretien(candidat, enseignant, dateEntretien);
-		Entretien createdEntretien = entretienDao.createEntretien(entretien);
-		if (createdEntretien != null){
-			response.sendRedirect("enseignant/foldersList.jsp");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			String date = request.getParameter("date-ent");
+			String time = request.getParameter("time-ent");
+			String dateandtime = date + " " + time;
+			Candidat candidat = (Candidat) request.getSession().getAttribute("foundedCandidat");
+			Enseignant enseignant = (Enseignant) request.getSession().getAttribute("connectedEnseignant");
+			candidat.setStatus(CandidatStatus.EN_COURS);
+			
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			Date dateEntretien = format.parse(dateandtime);
+			Entretien entretien = new Entretien(candidat, enseignant, dateEntretien);
+			enseignant.addEntretien(entretien);
+			// candidat.setEntretien(entretien);
+			Candidat updatedCandidat = candidatDao.updateCandidat(candidat);
+			Enseignant updatedEnseignant = enseignantDao.updateEnseignant(enseignant);
+			if (updatedEnseignant != null) {
+				List<Entretien> entretienList = enseignant.getEntretienList();
+				if(entretienList != null){
+					request.getSession().setAttribute("entretienList", entretienList);
+				}
+				response.sendRedirect("enseignant/foldersList.jsp");
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 	}
 
