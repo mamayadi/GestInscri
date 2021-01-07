@@ -65,9 +65,10 @@ public class DocumentsPedagogiquesDao {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			session.update(documentsPedagogiques);
+			DocumentsPedagogiques sm = (DocumentsPedagogiques) session.merge(documentsPedagogiques);
+			session.update(sm);
 			transaction.commit();
-			return documentsPedagogiques;
+			return sm;
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();

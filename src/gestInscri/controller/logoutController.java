@@ -28,14 +28,15 @@ public class logoutController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.removeAttribute("connectedUser");
-		request.removeAttribute("connectedEnseignant");
-		request.removeAttribute("connectedCandidat");
-		request.removeAttribute("candidatList");
-		request.removeAttribute("adminList");
-		request.removeAttribute("enseignantList");
+		
+		request.getSession().removeAttribute("connectedUser");
+		request.getSession().removeAttribute("connectedEnseignant");
+		request.getSession().removeAttribute("connectedCandidat");
+		request.getSession().removeAttribute("candidatList");
+		request.getSession().removeAttribute("adminList");
+		request.getSession().removeAttribute("enseignantList");
 		// Candidat detail
-		request.removeAttribute("foundedCandidat");
+		request.getSession().removeAttribute("foundedCandidat");
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}
 

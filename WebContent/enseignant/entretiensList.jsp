@@ -46,7 +46,8 @@
 											<h3 class="nk-block-title page-title">Liste des
 												Entretiens</h3>
 											<div class="nk-block-des text-soft">
-												<p>Vous avez un total de ${entretienList.size() } entretiens.</p>
+												<p>Vous avez un total de ${entretienList.size() }
+													entretiens.</p>
 											</div>
 										</div>
 										<!-- .nk-block-head-content -->
@@ -179,22 +180,38 @@
 														</c:otherwise>
 													</c:choose>
 												</div>
+
 												<div class="nk-tb-col nk-tb-col-tools">
 													<ul class="nk-tb-actions gx-1">
-														<li class="nk-tb-action-hidden"><a href="#"
-															class="btn btn-success btn-icon" data-toggle="tooltip"
-															data-placement="top" title="Accepter"> <em
-																class="icon ni ni-check-round-fill"></em>
-														</a></li>
+
+														<li class="nk-tb-action-hidden">
+															<form action="rsltEntController" method="POST">
+																<input type="text" value="${entretien.getId()}"
+																	name="entretienId" hidden="true" />
+																<button class="btn btn-icon btn-rg btn-success"
+																	type="submit" name="accept" value="accepted">
+																	<em class="icon ni ni-check-round-fill"></em>
+																</button>
+
+															</form>
+
+														</li>
 														<li class="nk-tb-action-hidden"></li>
-														<li class="nk-tb-action-hidden"><a href="#"
-															class="btn btn-danger btn-icon" data-toggle="tooltip"
-															data-placement="top" title="Refuser"> <em
-																class="icon ni ni-cross-round-fill"></em>
-														</a></li>
+														<li class="nk-tb-action-hidden">
+															<form action="rsltEntController" method="POST">
+																<input type="text" value="${entretien.getId()}"
+																	name="entretienId" hidden="true" />
+																<button class="btn btn-icon btn-rg btn-danger"
+																	type="submit" name="refus" value="refused">
+																	<em class="icon ni ni-cross-round-fill"></em>
+																</button>
+															</form>
+														</li>
 													</ul>
 												</div>
 											</div>
+
+
 										</c:forEach>
 										<!-- .nk-tb-item -->
 									</div>

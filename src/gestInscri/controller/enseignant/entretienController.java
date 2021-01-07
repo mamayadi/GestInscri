@@ -61,20 +61,28 @@ public class entretienController extends HttpServlet {
 			String date = request.getParameter("date-ent");
 			String time = request.getParameter("time-ent");
 			String dateandtime = date + " " + time;
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			Date dateEntretien = format.parse(dateandtime);
+
 			Candidat candidat = (Candidat) request.getSession().getAttribute("foundedCandidat");
 			Enseignant enseignant = (Enseignant) request.getSession().getAttribute("connectedEnseignant");
 			candidat.setStatus(CandidatStatus.EN_COURS);
-			
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			Date dateEntretien = format.parse(dateandtime);
-			Entretien entretien = new Entretien(candidat, enseignant, dateEntretien);
-			enseignant.addEntretien(entretien);
-			// candidat.setEntretien(entretien);
 			Candidat updatedCandidat = candidatDao.updateCandidat(candidat);
-			Enseignant updatedEnseignant = enseignantDao.updateEnseignant(enseignant);
-			if (updatedEnseignant != null) {
+			
+			Entretien entretien = candidat.getEntretien();
+			Entretien createdOrUpdatedEntretien = null;
+			if (entretien == null) {
+				entretien = new Entretien(candidat, enseignant, dateEntretien);
+				createdOrUpdatedEntretien = entretienDao.createEntretien(entretien);
+
+			} else {
+				entretien.setDateEntretien(dateEntretien);
+				createdOrUpdatedEntretien = entretienDao.updateEntretien(entretien);
+			}
+
+			if (createdOrUpdatedEntretien != null) {
 				List<Entretien> entretienList = enseignant.getEntretienList();
-				if(entretienList != null){
+				if (entretienList != null) {
 					request.getSession().setAttribute("entretienList", entretienList);
 				}
 				response.sendRedirect("enseignant/foldersList.jsp");
