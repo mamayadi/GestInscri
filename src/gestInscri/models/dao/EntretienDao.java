@@ -82,9 +82,10 @@ public class EntretienDao {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			session.update(entretien);
+			Entretien sm = (Entretien) session.merge(entretien);
+			session.update(sm);
 			transaction.commit();
-			return entretien;
+			return sm;
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();

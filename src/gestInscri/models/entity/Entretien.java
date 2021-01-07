@@ -31,7 +31,7 @@ public class Entretien implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="candidat_id")
 	private Candidat candidat;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
