@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import gestInscri.models.entity.Candidat;
 import gestInscri.models.entity.Enseignant;
+import gestInscri.utils.SendMail;
 import gestInscri.models.dao.EnseignantDao;
 import gestInscri.enums.CandidatStatus;
 import gestInscri.models.dao.CandidatDao;
@@ -26,6 +27,7 @@ public class AffecterEnsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	EnseignantDao enseignantDao = new EnseignantDao();
 	CandidatDao candidatDao = new CandidatDao();
+	SendMail mail = new SendMail();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -67,6 +69,7 @@ public class AffecterEnsController extends HttpServlet {
 			Candidat updatedCandidat = candidatDao.updateCandidat(candidat);
 
 			if (updatedCandidat != null){
+				mail.sendEnseignantMail(enseignant);
 				getServletContext().getRequestDispatcher("/admin/folderDetails.jsp?id=" + enseignantId).forward(request,
 						response);
 			}

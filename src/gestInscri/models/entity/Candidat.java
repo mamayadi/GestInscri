@@ -31,20 +31,20 @@ public class Candidat implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	@Column(name = "adresse", nullable = true)
 	private String adresse;
-	@OneToOne(cascade=CascadeType.ALL, optional = true)
+	@OneToOne(cascade = CascadeType.ALL, optional = true)
 	private DocumentsPedagogiques documentsPedagogiques;
 	@Column(name = "status", nullable = true)
 	private CandidatStatus status;
 	@Column(name = "inscrit", nullable = true)
 	private boolean inscrit = false;
-	@ManyToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY, optional = true)
-	@JoinTable(name="enseignant_candidat")
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+	@JoinTable(name = "enseignant_candidat")
 	private Enseignant enseignant;
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = true, mappedBy = "candidat")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true, mappedBy = "candidat")
 	private Entretien entretien;
 
 	public Enseignant getEnseignant() {
